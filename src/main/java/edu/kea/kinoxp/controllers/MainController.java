@@ -26,7 +26,7 @@ public class MainController {
 
     @GetMapping("/createMoviePage")
     public String createMoviePage(){
-        return "create-movie.html";
+        return "create-movie";
     }
 
     @GetMapping("/editMoviePage")
