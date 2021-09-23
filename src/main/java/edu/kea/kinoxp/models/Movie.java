@@ -1,6 +1,9 @@
 package edu.kea.kinoxp.models;
 
+import javax.persistence.Id;
+
 public class Movie {
+    @Id
     private int idmovies;
     private String title;
     private double price;
@@ -22,6 +25,8 @@ public class Movie {
         this.actors = actors;
         this.moviePoster = moviePoster;
     }
+
+    public Movie(){}
 
     public int getIdmovies() {
         return idmovies;

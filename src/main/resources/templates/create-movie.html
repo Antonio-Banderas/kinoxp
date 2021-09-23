@@ -5,6 +5,41 @@
     <title>Title</title>
 </head>
 <body>
-    <p>Hello</p>
+<div class="wrapperCreateCustomer">
+    <!-- "method" fortæller hvordan form-data skal sendes til en side som er specificeret i "action", altså createCustomer siden. -->
+    <form action="/createMovie" method="post">
+        <div class="customerParagraph">
+            <!-- nedenstående gør vi brug af input type "text" hvor name er det field, som vi ønsker at redigere i, og placeholderen er den tekst, som står i tekstfeltet -->
+            <label>
+                Enter title<input type="text" name="title" placeholder="title">
+            </label>
+            <label>
+                price<input type="text" name="price" placeholder="Last name">
+            </label>
+            <label>
+                length<input type="text" name="length" placeholder="Phone number">
+            </label>
+            <label>
+                age<input type="text" name="age" placeholder="Email">
+            </label>
+            <label>
+                genre<input type="text" name="genre" placeholder="Driver license number">
+            </label>
+            <label>
+                description<input type="text" name="description" placeholder="Address">
+            </label>
+            <label>
+                actors<input type="text" name="actors" placeholder="Zip code">
+            </label>
+            <label>
+                moviePoster<input type="text" name="movieposter" placeholder="Zip code">
+            </label>
+            <div class="createCustomer">
+                <!-- button er en knap, hvor vi kan specificere "value" af knappen -->
+                <button type="submit" value="Create new movie">Create new movie</button>
+            </div>
+        </div>
+    </form>
+</div>
 </body>
 </html>

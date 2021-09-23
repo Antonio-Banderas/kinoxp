@@ -2,17 +2,18 @@ package edu.kea.kinoxp.controllers;
 import edu.kea.kinoxp.models.Movie;
 import edu.kea.kinoxp.services.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
-@RestController
+@Controller
 public class MainController {
     @Autowired
     MovieService movieService;
 
     //SIDER
     @GetMapping("/")
-    public String getFrontpage(){
-        return "frontpage.html";
+    public String renderFrontpage(){
+        return "frontpage";
     }
     @GetMapping("/movies")
     public String getMovies(){
@@ -25,7 +26,7 @@ public class MainController {
     }
 
     @GetMapping("/createMoviePage")
-    public String createMoviePage(){
+    public String renderMoviePage(){
         return "create-movie";
     }
 
@@ -38,7 +39,7 @@ public class MainController {
     @PostMapping("/createMovie")
     public String createMovie(@ModelAttribute Movie m){
         movieService.createMovie(m);
-        return "";
+        return "frontpage";
     }
     @PutMapping("/editMovie")
     public String editMovie(){
