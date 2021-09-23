@@ -1,8 +1,13 @@
 package edu.kea.kinoxp.controllers;
+import edu.kea.kinoxp.models.Movie;
+import edu.kea.kinoxp.services.MovieService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class MainController {
+    @Autowired
+    MovieService movieService;
 
     //SIDER
     @GetMapping("/")
@@ -31,7 +36,8 @@ public class MainController {
 
     //API METODER
     @PostMapping("/createMovie")
-    public String createMovie(){
+    public String createMovie(@ModelAttribute Movie m){
+        movieService.createMovie(m);
         return "";
     }
     @PutMapping("/editMovie")
