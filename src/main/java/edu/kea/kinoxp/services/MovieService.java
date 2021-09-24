@@ -28,4 +28,8 @@ public class MovieService {
         movieRepo.updateMovie(m);
     }
 
+    public void deleteMovie(int id){
+        movieRepo.deleteMovie(id);
+    }
+
 }
