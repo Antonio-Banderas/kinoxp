@@ -12,9 +12,9 @@ public class Movie {
     private String genre;
     private String description;
     private String actors; //Måske array
-    private String moviePoster;
+    private String movieposter;
 
-    public Movie(int idmovies, String title, double price, int length, int age, String genre, String description, String actors, String moviePoster) {
+    public Movie(int idmovies, String title, double price, int length, int age, String genre, String description, String actors, String movieposter) {
         this.idmovies = idmovies;
         this.title = title;
         this.price = price;
@@ -23,7 +23,7 @@ public class Movie {
         this.genre = genre;
         this.description = description;
         this.actors = actors;
-        this.moviePoster = moviePoster;
+        this.movieposter = movieposter;
     }
 
     public Movie(){}
@@ -92,11 +92,11 @@ public class Movie {
         this.actors = actors;
     }
 
-    public String getMoviePoster() {
-        return moviePoster;
+    public String getMovieposter() {
+        return movieposter;
     }
 
-    public void setMoviePoster(String moviePoster) {
-        this.moviePoster = moviePoster;
+    public void setMovieposter(String movieposter) {
+        this.movieposter = movieposter;
     }
 }

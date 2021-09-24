@@ -12,7 +12,8 @@ public class MovieRepo {
 
     public Movie createMovie(Movie m){
         String sql = "INSERT INTO movies(idmovies, title, price, length, age, genre, description, actors, movieposter) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        template.update(sql, m.getIdmovies(), m.getTitle(), m.getPrice(), m.getLength(), m.getAge(), m.getGenre(), m.getDescription(), m.getActors(), m.getMoviePoster());
+        template.update(sql, m.getIdmovies(), m.getTitle(), m.getPrice(), m.getLength(), m.getAge(), m.getGenre(), m.getDescription(), m.getActors(), m.getMovieposter());
+        System.out.println(m.getTitle() + m.getMovieposter());
         return null;
     }
 
