@@ -24,7 +24,7 @@ public class MainController {
         return "movies.html";
     }
 
-    @GetMapping("/movie/{id}")
+    @GetMapping("/movies/{id}")
     public String getSpecificMovie(@PathVariable String id, Model model){
         model.addAttribute("film",movieService.getMovie(Integer.parseInt(id)));
         return "movie.html";
@@ -54,13 +54,13 @@ public class MainController {
         return "frontpage";
     }
 
-    @PutMapping("/editMovie")
+    @PostMapping("/editMovie")
     public String editMovie(@ModelAttribute Movie m){
         movieService.updateMovie(m);
-        return "";
+        return "redirect:/movies/" + m.getIdmovies();
     }
 
-    @DeleteMapping("/deleteMovie")
+    @PostMapping("/deleteMovie")
     public String deleteMovie(){
         return "";
     }
