@@ -3,6 +3,7 @@ import edu.kea.kinoxp.models.Movie;
 import edu.kea.kinoxp.services.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
@@ -17,8 +18,8 @@ public class MainController {
     }
 
     @GetMapping("/movies")
-    public String getMovies() {
-        movieService.
+    public String getMovies(Model model) {
+        model.addAttribute("movies", movieService.fetchAllMovies());
         return "movies.html";
     }
 
