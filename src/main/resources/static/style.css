@@ -10,6 +10,9 @@ body{
 }
 .movie-picture{
     text-align: center;
+    display: flex;
+    align-items: center;
+justify-content: center;
 }
 .movie-picture > img{
     max-width: 350px;
@@ -23,8 +26,19 @@ header{
     background: red;
 }
 .container{
-    background: #671926;
+    background: #343f4c;
+    height: 600px;
 }
 h2,h1,h3,span,p{
     color: white;
+    font-family: 'Montserrat', sans-serif;
+}
+footer{
+    background: #4b4d4c;
+    height: 70px;
+    color: white;
+    display: flex;
+    font-family: 'Montserrat', sans-serif;
+    align-items: center;
+    justify-content: center;
 }
