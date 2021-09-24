@@ -1,23 +1,20 @@
 package edu.kea.kinoxp.models;
 
-import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity
 public class Movie {
-
     @Id
     private int idmovies;
     private String title;
-    private int price;
+    private double price;
     private int length;
-    private int age;
+    private String age;
     private String genre;
     private String description;
     private String actors; //Måske array
     private String movieposter;
 
-    public Movie(int idmovies, String title, int price, int length, int age, String genre, String description, String actors, String movieposter) {
+    public Movie(int idmovies, String title, double price, int length, String age, String genre, String description, String actors, String movieposter) {
         this.idmovies = idmovies;
         this.title = title;
         this.price = price;
@@ -47,11 +44,11 @@ public class Movie {
         this.title = title;
     }
 
-    public int getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 
@@ -63,11 +60,11 @@ public class Movie {
         this.length = length;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
