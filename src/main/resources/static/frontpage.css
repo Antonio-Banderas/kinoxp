@@ -1,0 +1,9 @@
+button {
+    display: block;
+    border-radius: 5px;
+}
+
+nav {
+    display: grid;
+    place-items: center;
+}
