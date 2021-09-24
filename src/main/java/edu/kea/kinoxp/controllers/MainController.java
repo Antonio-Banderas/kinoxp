@@ -61,7 +61,8 @@ public class MainController {
     }
 
     @PostMapping("/deleteMovie")
-    public String deleteMovie(){
-        return "";
+    public String deleteMovie(@RequestParam int Idmovies){
+        movieService.deleteMovie(Idmovies);
+        return "redirect:/movies";
     }
 }

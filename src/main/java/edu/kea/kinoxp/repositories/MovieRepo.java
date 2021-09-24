@@ -37,4 +37,9 @@ public class MovieRepo {
         String sql = "UPDATE movies SET title = ?, price = ?, length = ?, age = ?, genre = ?, description = ?, actors = ?, movieposter = ? WHERE idmovies = ?";
         template.update(sql, m.getTitle(), m.getPrice(), m.getLength(), m.getAge(), m.getGenre(), m.getDescription(), m.getActors(), m.getMovieposter(), m.getIdmovies());
     }
+
+    public void deleteMovie(int id){
+        String sql = "DELETE FROM movies where idmovies = ?";
+        template.update(sql, id);
+    }
 }
