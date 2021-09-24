@@ -12,36 +12,36 @@
 
 <div class="container">
     <div class="movie-picture">
-        <img src="https://www.kino.dk/sites/default/files/styles/k_poster_big/public/movie-posters/no-time-to-die-pla_610111147de96.jpg?itok=x8r4jV1M"/>
+        <img th:src="${film.movieposter}"/>
     </div>
     <div class="movie-information">
-        <h1>No time to die</h1>
+        <h1 th:text="${film.title}"></h1>
 
         <div class="movie-grid">
             <div class="movie-price">
                 <h2>Pris:</h2>
-                <span>120 kr</span>
+                <span th:text="${film.price}"></span>
             </div>
 
             <div class="movie-age">
                 <h2>Alder:</h2>
-                <span>PG-16</span>
+                <span th:text="${film.age}"></span>
             </div>
 
             <div class="movie-length">
                 <h2>Varighed:</h2>
-                <span>2 timer og 43 min</span>
+                <span th:text="${film.length}"></span>
             </div>
 
             <div class="movie-genre">
                 <h2>Genre:</h2>
-                <span>Action</span>
+                <span th:text="${film.genre}"></span>
             </div>
         </div>
 
         <div class="movie-description">
             <h2>Info:</h2>
-            <p>Bond, James Bond. Perhaps the greatest fictional cinema icon ever. He first appeared on the big screen in 1962 in Dr. No, and has remained the most powerful action hero ever since. The secret to his success is his adaptability. No matter what tight spot he finds himself, he always appears to be suave, sophisticated and cool. </p>
+   <p th:text="${film.description}"></p>
         </div>
 
     </div>

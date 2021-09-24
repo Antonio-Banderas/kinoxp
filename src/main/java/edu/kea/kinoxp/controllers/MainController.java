@@ -24,9 +24,9 @@ public class MainController {
         return "movies.html";
     }
 
-    @GetMapping("/movies/{id}")
-    public String getSpecificMovie(@PathVariable String id){
-        System.out.println(movieService.getMovie(Integer.parseInt(id)));
+    @GetMapping("/movie/{id}")
+    public String getSpecificMovie(@PathVariable String id, Model model){
+        model.addAttribute("film",movieService.getMovie(Integer.parseInt(id)));
         return "movie.html";
     }
 
@@ -37,7 +37,7 @@ public class MainController {
 
     //SC
 
-    @GetMapping("/movies/{id}")
+    @GetMapping("/movies/{id}/edit")
     public String editMoviePage(Model model, @PathVariable int id){
         //Movie movie = movieService.fetchMovieByID(id);
         //Movie movie = new Movie(1,"Hestemand", 1, 1, 1, "genre", "description", "actors", "moviepost.jpg");
