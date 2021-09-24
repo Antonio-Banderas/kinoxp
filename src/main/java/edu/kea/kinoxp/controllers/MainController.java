@@ -15,8 +15,10 @@ public class MainController {
     public String renderFrontpage(){
         return "frontpage";
     }
+
     @GetMapping("/movies")
-    public String getMovies(){
+    public String getMovies() {
+        movieService.
         return "movies.html";
     }
 
@@ -41,10 +43,12 @@ public class MainController {
         movieService.createMovie(m);
         return "frontpage";
     }
+
     @PutMapping("/editMovie")
     public String editMovie(){
         return "";
     }
+
     @DeleteMapping("/deleteMovie")
     public String deleteMovie(){
         return "";

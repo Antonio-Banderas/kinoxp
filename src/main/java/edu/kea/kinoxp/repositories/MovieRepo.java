@@ -2,8 +2,12 @@ package edu.kea.kinoxp.repositories;
 
 import edu.kea.kinoxp.models.Movie;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.BeanPropertyRowMapper;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 import org.springframework.jdbc.core.JdbcTemplate;
+
+import java.util.List;
 
 @Repository
 public class MovieRepo {
@@ -17,4 +21,16 @@ public class MovieRepo {
         return null;
     }
 
+    public List<Movie> fetchAllMovies() {
+        String sql = "SELECT * FROM movies";
+        RowMapper<Movie> rowMapper = new BeanPropertyRowMapper<>(Movie.class);
+        return template.query(sql, rowMapper);
+    }
+
+    public Movie fetchMovieByID(int movieID){
+        String sql = "select * from movies where idmovies = ?";
+        RowMapper<Movie> rowMapper = new BeanPropertyRowMapper<>(Movie.class);
+        Movie movie = template.queryForObject(sql, rowMapper, movieID);
+        return movie;
+    }
 }
