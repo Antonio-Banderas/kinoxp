@@ -5,6 +5,7 @@
     <title>Title</title>
     <link rel="stylesheet" th:href="@{/edit-movie.css}">
 </head>
+<header th:replace="fragments/header.html"></header>
 <body>
 <!-- thymeleaf model from controller-->
 <form action="/editMovie" method="put">
@@ -21,4 +22,5 @@
     <button type="submit">Update</button>
 </form>
 </body>
+<footer th:replace="fragments/footer.html"></footer>
 </html>
