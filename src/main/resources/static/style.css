@@ -11,6 +11,9 @@ body{
 .movie-picture{
     text-align: center;
 }
+.movie-picture > img{
+    max-width: 350px;
+}
 .movie-grid{
     display: grid;
     grid-template-columns: 1fr 1fr;

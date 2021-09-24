@@ -24,9 +24,9 @@ public class MainController {
         return "movies.html";
     }
 
-    @GetMapping("/movies/{id}")
-    public String getSpecificMovie(@PathVariable String id){
-        System.out.println(movieService.getMovie(Integer.parseInt(id)));
+    @GetMapping("/movie/{id}")
+    public String getSpecificMovie(@PathVariable String id, Model model){
+        model.addAttribute("film",movieService.getMovie(Integer.parseInt(id)));
         return "movie.html";
     }
 
