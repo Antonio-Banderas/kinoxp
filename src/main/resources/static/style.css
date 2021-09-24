@@ -42,3 +42,14 @@ footer{
     align-items: center;
     justify-content: center;
 }
+.movie-titel{
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+}
+.movie-titel > a > i {
+    margin-left: 50%;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
