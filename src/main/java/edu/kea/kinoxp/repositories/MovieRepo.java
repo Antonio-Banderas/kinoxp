@@ -14,7 +14,7 @@ public class MovieRepo {
     @Autowired
     JdbcTemplate template;
 
-    public Movie createMovie(Movie m){
+    public Movie createMovie(Movie m) {
         String sql = "INSERT INTO movies(idmovies, title, price, length, age, genre, description, actors, movieposter) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
         template.update(sql, m.getIdmovies(), m.getTitle(), m.getPrice(), m.getLength(), m.getAge(), m.getGenre(), m.getDescription(), m.getActors(), m.getMovieposter());
         return null;
@@ -26,10 +26,15 @@ public class MovieRepo {
         return template.query(sql, rowMapper);
     }
 
-    public Movie fetchMovieByID(int movieID){
+    public Movie fetchMovieByID(int movieID) {
         String sql = "select * from movies where idmovies = ?";
         RowMapper<Movie> rowMapper = new BeanPropertyRowMapper<>(Movie.class);
         Movie movie = template.queryForObject(sql, rowMapper, movieID);
         return movie;
+    }
+
+    public void updateMovie(Movie m){
+        String sql = "UPDATE movies SET title = ?, price = ?, length = ?, age = ?, genre = ?, description = ?, actors = ?, movieposter = ? WHERE idmovies = ?";
+        template.update(sql, m.getTitle(), m.getPrice(), m.getLength(), m.getAge(), m.getGenre(), m.getDescription(), m.getActors(), m.getMovieposter(), m.getIdmovies());
     }
 }
