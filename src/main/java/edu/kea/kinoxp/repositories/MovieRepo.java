@@ -28,7 +28,7 @@ public class MovieRepo {
     }
 
     public Movie fetchMovieByID(int movieID) {
-        String sql = "select * from movies where idmovies = ?";
+        String sql = "SELECT * FROM movies WHERE idmovies = ?";
         RowMapper<Movie> rowMapper = new BeanPropertyRowMapper<>(Movie.class);
         Movie movie = template.queryForObject(sql, rowMapper, movieID);
         return movie;

@@ -1,5 +1,6 @@
 package edu.kea.kinoxp.controllers;
 import edu.kea.kinoxp.models.Movie;
+import edu.kea.kinoxp.repositories.MovieRepo;
 import edu.kea.kinoxp.services.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -23,8 +24,9 @@ public class MainController {
         return "movies.html";
     }
 
-    @GetMapping("/movie/${id]")
+    @GetMapping("/movies/{id}")
     public String getSpecificMovie(@PathVariable String id){
+        System.out.println(movieService.getMovie(Integer.parseInt(id)));
         return "movie.html";
     }
 
@@ -34,13 +36,16 @@ public class MainController {
     }
 
     //SC
+
     @GetMapping("/movies/{id}")
     public String editMoviePage(Model model, @PathVariable int id){
-        Movie movie = movieService.fetchMovieByID(id);
+        //Movie movie = movieService.fetchMovieByID(id);
         //Movie movie = new Movie(1,"Hestemand", 1, 1, 1, "genre", "description", "actors", "moviepost.jpg");
-        model.addAttribute("movie", movie);
+        //model.addAttribute("movie", movie);
         return "edit-movie.html";
     }
+
+
 
     //API METODER
     @PostMapping("/createMovie")

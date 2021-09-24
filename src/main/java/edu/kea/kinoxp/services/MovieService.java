@@ -20,11 +20,12 @@ public class MovieService {
         return movieRepo.fetchAllMovies();
     }
 
-    public Movie fetchMovieByID(int movieID) {
+    public Movie getMovie(int movieID){
         return movieRepo.fetchMovieByID(movieID);
     }
 
     public void updateMovie(Movie m){
         movieRepo.updateMovie(m);
     }
+
 }

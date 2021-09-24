@@ -1,0 +1,27 @@
+.container{
+    display: flex;
+}
+body{
+    margin: 0px;
+    padding: 0px;
+}
+.movie-picture, .movie-information{
+    flex: 1;
+}
+.movie-picture{
+    text-align: center;
+}
+.movie-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+header{
+    height: 200px;
+    background: red;
+}
+.container{
+    background: #671926;
+}
+h2,h1,h3,span,p{
+    color: white;
+}
