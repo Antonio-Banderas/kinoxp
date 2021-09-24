@@ -27,7 +27,7 @@ public class MovieRepo {
     }
 
     public Movie fetchMovieByID(int movieID) {
-        String sql = "select * from movies where idmovies = ?";
+        String sql = "SELECT * FROM movies WHERE idmovies = ?";
         RowMapper<Movie> rowMapper = new BeanPropertyRowMapper<>(Movie.class);
         Movie movie = template.queryForObject(sql, rowMapper, movieID);
         return movie;
@@ -36,5 +36,10 @@ public class MovieRepo {
     public void updateMovie(Movie m){
         String sql = "UPDATE movies SET title = ?, price = ?, length = ?, age = ?, genre = ?, description = ?, actors = ?, movieposter = ? WHERE idmovies = ?";
         template.update(sql, m.getTitle(), m.getPrice(), m.getLength(), m.getAge(), m.getGenre(), m.getDescription(), m.getActors(), m.getMovieposter(), m.getIdmovies());
+    }
+
+    public void deleteMovie(int id){
+        String sql = "DELETE FROM movies where idmovies = ?";
+        template.update(sql, id);
     }
 }

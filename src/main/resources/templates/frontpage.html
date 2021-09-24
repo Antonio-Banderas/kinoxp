@@ -1,15 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Kino</title>
-</head>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments/head.html(currentPage='frontpage-fragment', customCSS='frontpage.css')"></head>
 <body>
+<nav>
     <button>
         <a href="/create-movie-page">Create Movie</a>
     </button>
     <button>
         <a href="/movies">List all Movies</a>
     </button>
+</nav>
 </body>
 </html>
