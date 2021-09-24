@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
 <div class="">
@@ -11,37 +12,36 @@
         <div class="">
             <!-- nedenstående gør vi brug af input type "text" hvor name er det field, som vi ønsker at redigere i, og placeholderen er den tekst, som står i tekstfeltet -->
             <label>
-                Titel<input type="text" name="title" placeholder="F.eks. James Bond">
+                Titel<input type="text" name="title" placeholder="Eks. James Bond">
             </label>
             <label>
-                Pris<input type="text" name="price" placeholder="Pr. billet">
+                Pris i kr.<input type="text" name="price" placeholder="Pr. billet">
             </label>
             <label>
                 Varighed<input type="text" name="length" placeholder="I minutter">
-                <a>minutter</a>
             </label>
-                <label for="age">C:</label>
-
-                <select id="age">
-                    <option label="Tilladt for alle"></option>
-                    <option label="Frarådes børn under 7 år"></option>
-                    <option label="Tilladt for børn fra 11 år"></option>
-                    <option label="Tilladt for børn fra 15 år"></option>
+            <label for="age">Filmcensur
+                <select id="age" name="age">
+                    <option name="age" label="Tilladt for alle">Tilladt for alle</option>
+                    <option name="age" label="Frarådes børn under 7 år">Frarådes børn under 7 år</option>
+                    <option name="age" label="Tilladt for børn fra 11 år">Tilladt for børn fra 11 år</option>
+                    <option name="age" label="Tilladt for børn fra 15 år">Tilladt for børn fra 15 år</option>
                 </select>
-            <label>
-                Genre<input type="text" name="genre" placeholder="Genre">
             </label>
             <label>
-                Info<input type="text" name="description" placeholder="Description">
+                Genre<input type="text" name="genre" placeholder="Eks. Action">
             </label>
             <label>
-                Skuespillere<input type="text" name="actors" placeholder="Actors">
+                Info<input type="text" name="description" placeholder="Indtast kort beskrivelse">
             </label>
             <label>
-                Plakat<input type="text" name="movieposter" placeholder="Movie poster">
+                Skuespillere<input type="text" name="actors" placeholder="Relevante skuespillere">
+            </label>
+            <label>
+                Plakat<input type="text" name="movieposter" placeholder="Indtast url">
             </label>
             <div class="">
-                <button type="submit" value="Create new movie">Create new movie</button>
+                <button type="submit" class="buttonClass" value="Create new movie">Create new movie</button>
             </div>
         </div>
     </form>

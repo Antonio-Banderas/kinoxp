@@ -1,0 +1,49 @@
+.container{
+    display: flex;
+}
+body{
+    margin: 0px;
+    padding: 0px;
+}
+.movie-picture, .movie-information{
+    flex: 1;
+}
+.movie-picture{
+    text-align: center;
+}
+.movie-picture > img{
+    max-width: 350px;
+}
+.movie-grid{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+header{
+    height: 200px;
+    background: red;
+}
+.container{
+    background: #671926;
+}
+h2,h1,h3,span,p{
+    color: white;
+}
+.buttonClass {
+    font-size: 16px;
+    font-weight: 200;
+    letter-spacing: 1px;
+    padding: 13px 20px 13px;
+    outline: 0;
+    border: 1px solid black;
+    cursor: pointer;
+    position: relative;
+    background-color: #FFF9FB;
+    color: #BB0A21;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+}
+.buttonClass:hover {
+    color: #FFF9FB;
+    background-color: #3EC300;
+}
