@@ -1,11 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" th:href="@{/edit-movie.css}">
-</head>
+
+<head th:replace="fragments/head.html(currentPage='Edit Movie', customCSS='edit-movie.css')"></head>
 <header th:replace="fragments/header.html"></header>
+
 <body>
 <!-- thymeleaf model from controller-->
 <section>
@@ -15,19 +13,68 @@
     </form>
 </section>
 <section>
-<form action="/editMovie" method="post">
-    <input type="hidden" name="Idmovies" th:value="${movie.getIdmovies}">
-    <label>Title: <input type="text" name="title" th:value="${movie.getTitle}"></label>
-    <label>Price: <input type="number" name="price" th:value="${movie.getPrice}"></label>
-    <label>Length: <input type="number" name="length" th:value="${movie.getLength}"></label>
-    <label>Age: <input type="number" name="age" th:value="${movie.getAge}"></label>
-    <label>Genre: <input type="text" name="genre" th:value="${movie.getGenre}"></label>
-    <label>Description: <input type="text" name="description" th:value="${movie.getDescription}"></label>
-    <label>Actors: <input type="text" name="actors" th:value="${movie.getActors}"></label>
-    <label>Movie Poster: <input type="text" name="movieposter" th:value="${movie.getMovieposter}"></label>
-    <!-- //todo camelcase getMoviePoster -->
-    <button type="submit">Update</button>
-</form>
+    <form action="/editMovie" method="post">
+        <div class="container">
+
+            <div class="movie-picture">
+                <img th:src="${movie.getMovieposter}"/>
+            </div>
+
+            <div class="movie-information">
+                <div class="movie-titel">
+                    <h1><input type="text" name="title" th:value="${movie.getTitle}"></h1>
+                        <i class="fas fa-pencil-alt"></i>
+                    </a>
+                </div>
+                <div class="movie-grid">
+                    <div class="movie-price">
+                        <h2>Pris:</h2>
+                        <input type="number" name="price" th:value="${movie.getPrice}">
+                    </div>
+
+                    <div class="movie-age">
+                        <h2>Alder:</h2>
+                        <input type="number" name="age" th:value="${movie.getAge}">
+                    </div>
+
+                    <div class="movie-length">
+                        <h2>Varighed:</h2>
+                        <input type="number" name="length" th:value="${movie.getLength}">
+                    </div>
+
+                    <div class="movie-genre">
+                        <h2>Genre:</h2>
+                        <input type="text" name="genre" th:value="${movie.getGenre}">
+                    </div>
+
+                    <div class="movie-actors">
+                        <h2>Skuespillere:</h2>
+                        <input type="text" name="actors" th:value="${movie.getActors}">
+                    </div>
+
+                </div>
+
+                <div class="movie-description">
+                    <h2>Info:</h2>
+                    <input type="text" name="description" th:value="${movie.getDescription}">
+                </div>
+
+            </div>
+
+        </div>
+
+        <input type="hidden" name="Idmovies" th:value="${movie.getIdmovies}">
+        <label>Title: <input type="text" name="title" th:value="${movie.getTitle}"></label>
+        <label>Price: <input type="number" name="price" th:value="${movie.getPrice}"></label>
+        <label>Length: <input type="number" name="length" th:value="${movie.getLength}"></label>
+        <label>Age: <input type="number" name="age" th:value="${movie.getAge}"></label>
+        <label>Genre: <input type="text" name="genre" th:value="${movie.getGenre}"></label>
+        <label>Description: <input type="text" name="description" th:value="${movie.getDescription}"></label>
+        <label>Actors: <input type="text" name="actors" th:value="${movie.getActors}"></label>
+        <label>Movie Poster: <input type="text" name="movieposter" th:value="${movie.getMovieposter}"></label>
+        <!-- //todo camelcase getMoviePoster -->
+        <button type="submit">Update</button>
+    </form>
 </section>
 </body>
 <footer th:replace="fragments/footer.html"></footer>
