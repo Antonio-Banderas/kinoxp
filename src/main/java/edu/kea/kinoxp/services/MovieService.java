@@ -23,4 +23,8 @@ public class MovieService {
     public Movie fetchMovieByID(int movieID) {
         return movieRepo.fetchMovieByID(movieID);
     }
+
+    public void updateMovie(Movie m){
+        movieRepo.updateMovie(m);
+    }
 }

@@ -33,4 +33,9 @@ public class MovieRepo {
         Movie movie = template.queryForObject(sql, rowMapper, movieID);
         return movie;
     }
+
+    public void updateMovie(Movie m){
+        String sql = "UPDATE movies SET title = ?, price = ?, length = ?, age = ?, genre = ?, description = ?, actors = ?, movieposter = ? WHERE idmovies = ?";
+        template.update(sql, m.getTitle(), m.getPrice(), m.getLength(), m.getAge(), m.getGenre(), m.getDescription(), m.getActors(), m.getMovieposter(), m.getIdmovies());
+    }
 }

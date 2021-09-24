@@ -33,8 +33,12 @@ public class MainController {
         return "create-movie";
     }
 
-    @GetMapping("/editMoviePage")
-    public String editMoviePage(){
+    //SC
+    @GetMapping("/movies/{id}")
+    public String editMoviePage(Model model, @PathVariable int id){
+        Movie movie = movieService.fetchMovieByID(id);
+        //Movie movie = new Movie(1,"Hestemand", 1, 1, 1, "genre", "description", "actors", "moviepost.jpg");
+        model.addAttribute("movie", movie);
         return "edit-movie.html";
     }
 
@@ -46,7 +50,8 @@ public class MainController {
     }
 
     @PutMapping("/editMovie")
-    public String editMovie(){
+    public String editMovie(@ModelAttribute Movie m){
+        movieService.updateMovie(m);
         return "";
     }
 
