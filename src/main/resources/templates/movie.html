@@ -1,21 +1,21 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8">
-    <title>Film</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/style.css}"/>
-</head>
+<head th:replace="fragments/head.html"></head>
+<header th:replace="fragments/header.html"></header>
 <body>
-<header>
-   <p>Logo</p>
-</header>
 
 <div class="container">
     <div class="movie-picture">
         <img th:src="${film.movieposter}"/>
     </div>
     <div class="movie-information">
-        <h1 th:text="${film.title}"></h1>
+        <div class="movie-titel">
+            <h1 th:text="${film.title}"></h1>
+            <a th:href="@{'/movies/' + ${film.idmovies} + '/edit'}">
+                <i class="fas fa-pencil-alt"></i>
+            </a>
+
+        </div>
 
         <div class="movie-grid">
             <div class="movie-price">
@@ -37,6 +37,11 @@
                 <h2>Genre:</h2>
                 <span th:text="${film.genre}"></span>
             </div>
+
+            <div class="movie-actors">
+                <h2>Skuespillere:</h2>
+                <span th:text="${film.actors}"></span>
+            </div>
         </div>
 
         <div class="movie-description">
@@ -46,6 +51,6 @@
 
     </div>
 </div>
-
+<footer th:replace="fragments/footer.html"></footer>
 </body>
 </html>
