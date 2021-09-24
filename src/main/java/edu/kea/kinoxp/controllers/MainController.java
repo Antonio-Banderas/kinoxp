@@ -39,9 +39,9 @@ public class MainController {
 
     @GetMapping("/movies/{id}/edit")
     public String editMoviePage(Model model, @PathVariable int id){
-        //Movie movie = movieService.fetchMovieByID(id);
+        Movie movie = movieService.getMovie(id);
         //Movie movie = new Movie(1,"Hestemand", 1, 1, 1, "genre", "description", "actors", "moviepost.jpg");
-        //model.addAttribute("movie", movie);
+        model.addAttribute("movie", movie);
         return "edit-movie.html";
     }
 
