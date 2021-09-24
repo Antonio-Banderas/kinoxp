@@ -41,10 +41,12 @@ public class MainController {
         movieService.createMovie(m);
         return "frontpage";
     }
+
     @PutMapping("/editMovie")
     public String editMovie(){
         return "";
     }
+
     @DeleteMapping("/deleteMovie")
     public String deleteMovie(){
         return "";
