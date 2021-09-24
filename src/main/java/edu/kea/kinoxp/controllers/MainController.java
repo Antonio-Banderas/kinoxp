@@ -15,8 +15,10 @@ public class MainController {
     public String renderFrontpage(){
         return "frontpage";
     }
+
     @GetMapping("/movies")
-    public String getMovies(){
+    public String getMovies() {
+        movieService.
         return "movies.html";
     }
 

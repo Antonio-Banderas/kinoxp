@@ -5,6 +5,8 @@ import edu.kea.kinoxp.repositories.MovieRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class MovieService {
     @Autowired
@@ -12,5 +14,13 @@ public class MovieService {
 
     public Movie createMovie(Movie m){
         return movieRepo.createMovie(m);
+    }
+
+    public List<Movie> fetchAllMovies() {
+        return movieRepo.fetchAllMovies();
+    }
+
+    public Movie fetchMovieByID(int movieID) {
+        return movieRepo.fetchMovieByID(movieID);
     }
 }
