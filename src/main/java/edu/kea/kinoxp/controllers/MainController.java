@@ -16,18 +16,18 @@ public class MainController {
         return "frontpage";
     }
 
-    @GetMapping("/movies")
+   /* @GetMapping("/movies")
     public String getMovies() {
         movieService.
         return "movies.html";
-    }
+    }*/
 
     @GetMapping("/movie/${id]")
     public String getSpecificMovie(@PathVariable String id){
         return "movie.html";
     }
 
-    @GetMapping("/createMoviePage")
+    @GetMapping("/create-movie-page")
     public String renderMoviePage(){
         return "create-movie";
     }
@@ -38,7 +38,7 @@ public class MainController {
     }
 
     //API METODER
-    @PostMapping("/createMovie")
+    @PostMapping("/create-movie")
     public String createMovie(@ModelAttribute Movie m){
         movieService.createMovie(m);
         return "frontpage";

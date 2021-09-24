@@ -7,32 +7,38 @@
 <body>
 <div class="">
     <!-- "method" fortæller hvordan form-data skal sendes til en side som er specificeret i "action", altså createCustomer siden. -->
-    <form action="/createMovie" method="post">
+    <form action="/create-movie" method="post">
         <div class="">
             <!-- nedenstående gør vi brug af input type "text" hvor name er det field, som vi ønsker at redigere i, og placeholderen er den tekst, som står i tekstfeltet -->
             <label>
-                Enter title<input type="text" name="title" placeholder="Title">
+                Titel<input type="text" name="title" placeholder="F.eks. James Bond">
             </label>
             <label>
-                Enter price<input type="text" name="price" placeholder="Price">
+                Pris<input type="text" name="price" placeholder="Pr. billet">
             </label>
             <label>
-                Enter length<input type="text" name="length" placeholder="Length">
+                Varighed<input type="text" name="length" placeholder="I minutter">
+                <a>minutter</a>
+            </label>
+                <label for="age">C:</label>
+
+                <select id="age">
+                    <option label="Tilladt for alle"></option>
+                    <option label="Frarådes børn under 7 år"></option>
+                    <option label="Tilladt for børn fra 11 år"></option>
+                    <option label="Tilladt for børn fra 15 år"></option>
+                </select>
+            <label>
+                Genre<input type="text" name="genre" placeholder="Genre">
             </label>
             <label>
-                Enter age<input type="text" name="age" placeholder="Age">
+                Info<input type="text" name="description" placeholder="Description">
             </label>
             <label>
-                Enter genre<input type="text" name="genre" placeholder="Genre">
+                Skuespillere<input type="text" name="actors" placeholder="Actors">
             </label>
             <label>
-                Enter description<input type="text" name="description" placeholder="Description">
-            </label>
-            <label>
-                Enter actors<input type="text" name="actors" placeholder="Actors">
-            </label>
-            <label>
-                Enter movie poster<input type="text" name="movieposter" placeholder="Movie poster">
+                Plakat<input type="text" name="movieposter" placeholder="Movie poster">
             </label>
             <div class="">
                 <!-- button er en knap, hvor vi kan specificere "value" af knappen -->

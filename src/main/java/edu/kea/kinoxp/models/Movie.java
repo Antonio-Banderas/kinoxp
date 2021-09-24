@@ -8,13 +8,13 @@ public class Movie {
     private String title;
     private double price;
     private int length;
-    private int age;
+    private String age;
     private String genre;
     private String description;
     private String actors; //Måske array
     private String movieposter;
 
-    public Movie(int idmovies, String title, double price, int length, int age, String genre, String description, String actors, String movieposter) {
+    public Movie(int idmovies, String title, double price, int length, String age, String genre, String description, String actors, String movieposter) {
         this.idmovies = idmovies;
         this.title = title;
         this.price = price;
@@ -60,11 +60,11 @@ public class Movie {
         this.length = length;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
