@@ -14,11 +14,11 @@
         <form  th:action="@{'/movie/'+${singleMovie.idmovies}}">
             <button type="submit">
 
-                <img class="poster" alt="No Poster Found"/>
-                <span th:text="'Text'"/><b th:text="${singleMovie.title}"/><br/>
-                <span th:text="'Text'"/><b th:text="${singleMovie.length}"/><br/>
-                <span th:text="'Text'"/><b th:text="${singleMovie.description}"/><br/>
-                <span th:text="'Text'"/><b th:text="${singleMovie.genre}"/>
+                <img class="poster" alt="No Poster Found" style="float:left" width="180" height="260" th:src="${singleMovie.movieposter}"/>
+                <span th:text="'Titel: '"/><b th:text="${singleMovie.title}"/><br/>
+                <span th:text="'Varighed: '"/><b th:text="${singleMovie.length}"/><br/>
+                <span th:text="'Beskrivelse: '"/><b th:text="${singleMovie.description}"/><br/>
+                <span th:text="'Genre: '"/><b th:text="${singleMovie.genre}"/>
             </button>
         </form>
     </ul>
