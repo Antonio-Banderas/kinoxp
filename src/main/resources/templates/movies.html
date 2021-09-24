@@ -11,7 +11,7 @@
         <li colspan="2"> Ingen film tilgængelig </li>
     </ul>
     <ul th:each="singleMovie : ${movies}">
-        <form  th:action="@{'/movie/'+${singleMovie.idmovies}}">
+        <form  th:action="@{'/movies/'+${singleMovie.idmovies}}">
             <button type="submit">
 
                 <img class="poster" alt="No Poster Found" style="float:left" width="180" height="260" th:src="${singleMovie.movieposter}"/>

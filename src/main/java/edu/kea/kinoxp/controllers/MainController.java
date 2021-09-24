@@ -60,7 +60,7 @@ public class MainController {
         return "redirect:/movies/" + m.getIdmovies();
     }
 
-    @DeleteMapping("/deleteMovie")
+    @PostMapping("/deleteMovie")
     public String deleteMovie(){
         return "";
     }
