@@ -1,11 +1,11 @@
 * {
     box-sizing: border-box;
 }
-body {
-    font-family: 'Montserrat', sans-serif;
-    line-height: 1.6;
-    margin: 0;
-    min-height: 100vh;
+
+
+.header ul {
+
+
 }
 ul {
     margin: 0;
@@ -44,6 +44,13 @@ a {
 }
 
 .header {
+
+    font-family: 'Montserrat', sans-serif;
+    line-height: 1.6;
+    margin: 0;
+    min-height: 100vh;
+    background-color: blue;
+
     padding-top: .5em;
     padding-bottom: .5em;
     border: 1px solid #a2a2a2;
