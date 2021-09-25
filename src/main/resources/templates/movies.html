@@ -3,25 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../movielist.css">
 </head>
 <header th:replace="fragments/header.html"></header>
 <body>
-<div>
+<div class="center-box">
     <h1>Alle Film:</h1>
     <ul th:if="${movies.empty}">
         <li colspan="2"> Ingen film tilgængelig </li>
     </ul>
     <ul th:each="singleMovie : ${movies}">
-        <form  th:action="@{'/movies/'+${singleMovie.idmovies}}">
-            <button type="submit">
-
-                <img class="poster" alt="No Poster Found" style="float:left" width="180" height="260" th:src="${singleMovie.movieposter}"/>
+        <img class="poster" alt="No Poster Found" style="float:left" width="180" height="260" th:src="${singleMovie.movieposter}"/>
+            <form  th:action="@{'/movies/'+${singleMovie.idmovies}}">
                 <span th:text="'Titel: '"/><b th:text="${singleMovie.title}"/><br/>
                 <span th:text="'Varighed: '"/><b th:text="${singleMovie.length}"/><br/>
                 <span th:text="'Beskrivelse: '"/><b th:text="${singleMovie.description}"/><br/>
                 <span th:text="'Genre: '"/><b th:text="${singleMovie.genre}"/>
-            </button>
-        </form>
+                <button type="submit">Se Film</button>
+            </form>
     </ul>
 </div>
 </body>

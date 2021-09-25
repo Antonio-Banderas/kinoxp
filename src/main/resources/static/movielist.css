@@ -1,0 +1,11 @@
+.center-box {
+    margin: auto;
+    width: 800px;
+    padding:10px;
+}
+.center-box ul {
+    float:left;
+}
+.center-box span {
+    float:left;
+}
