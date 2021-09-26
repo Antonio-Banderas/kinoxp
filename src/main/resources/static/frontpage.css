@@ -1,9 +1,26 @@
-button {
-    display: block;
-    border-radius: 5px;
+*{
+    text-decoration: none;
+    color: white;
 }
-
 nav {
-    display: grid;
-    place-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    letter-spacing: 4px;
+    min-height: 100vh;
+}
+.btn-list {
+    width: 300px;
+    height: 100px;
+    border-radius: 10px;
+    background-color: #990000;
+    font-size: 2rem;
+}
+.btn-create {
+    width: 300px;
+    height: 100px;
+    border-radius: 10px;
+    background-color: #990000;
+    font-size: 2rem;
 }
