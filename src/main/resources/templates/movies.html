@@ -6,21 +6,28 @@
     <link rel="stylesheet" type="text/css" href="../movielist.css">
 </head>
 <header th:replace="fragments/header.html"></header>
-<body>
+<body style="background-color:#343f4c;">
 <div class="center-box">
-    <h1>Alle Film:</h1>
+    <h1 style="text-align: center; color:whitesmoke">Film oversigt</h1>
     <ul th:if="${movies.empty}">
         <li colspan="2"> Ingen film tilgængelig </li>
     </ul>
     <ul th:each="singleMovie : ${movies}">
-        <img class="poster" alt="No Poster Found" style="float:left" width="180" height="260" th:src="${singleMovie.movieposter}"/>
-            <form  th:action="@{'/movies/'+${singleMovie.idmovies}}">
-                <span th:text="'Titel: '"/><b th:text="${singleMovie.title}"/><br/>
-                <span th:text="'Varighed: '"/><b th:text="${singleMovie.length}"/><br/>
-                <span th:text="'Beskrivelse: '"/><b th:text="${singleMovie.description}"/><br/>
-                <span th:text="'Genre: '"/><b th:text="${singleMovie.genre}"/>
-                <button type="submit">Se Film</button>
+        <div class="movie-grid">
+            <a style="float:left;" th:href="@{'/movies/'+${singleMovie.idmovies}}">
+                <img class="poster" alt="No Poster Found" width="180" height="260" th:src="${singleMovie.movieposter}"/>
+            </a>
+        </div>
+        <div class="movie-info-field">
+            <form th:action="@{'/movies/'+${singleMovie.idmovies}}">
+                <h3 class="title" th:text="${singleMovie.title}"/>
+                <b th:text="'Varighed: '"/><span th:text="${singleMovie.length}"/><br/>
+                <b th:text="'Genre: '"/><span th:text="${singleMovie.genre}"/><br/>
+                <b th:text="'Beskrivelse: '"/><span th:text="${singleMovie.description}"/><br/>
+                <button class="movie-button" type="submit">Film Info</button>
             </form>
+        </div>
+
     </ul>
 </div>
 </body>

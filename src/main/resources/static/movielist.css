@@ -1,11 +1,32 @@
 .center-box {
     margin: auto;
-    width: 800px;
+    width: 1124px;
     padding:10px;
 }
 .center-box ul {
     float:left;
 }
-.center-box span {
+.center-box img {
     float:left;
+}
+.movie-info-field {
+    width: 178px;
+    height: 180px;
+    text-align: left;
+    color: whitesmoke;
+    background-color: #990000;
+    position: relative;
+    padding: 1px;
+}
+.title {
+    text-align:center
+}
+.movie-grid {
+    width:180px;
+    height:260px;
+}
+.movie-button {
+    position:absolute;
+    bottom: 5px;
+    right: 60px;
 }
