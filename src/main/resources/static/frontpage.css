@@ -12,15 +12,15 @@ nav {
 }
 .btn-list {
     width: 300px;
-    height: 100px;
-    border-radius: 10px;
+    height: 80px;
+    border-radius: 30px;
     background-color: #990000;
     font-size: 2rem;
 }
 .btn-create {
     width: 300px;
-    height: 100px;
-    border-radius: 10px;
+    height: 80px;
+    border-radius: 30px;
     background-color: #990000;
     font-size: 2rem;
 }

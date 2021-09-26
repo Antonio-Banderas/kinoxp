@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:replace="fragments/head.html(currentPage='frontpage-fragment', customCSS='frontpage.css')">
-
+<link rel="stylesheet" type="text/css" href="frontpage.css">
 </head>
 <header th:replace="fragments/header.html"></header>
 <body>
 <nav>
     <button class="btn-create">
-        <a href="/create-movie-page">Create Movie</a>
+        <a href="/create-movie-page">Opret Film</a>
     </button>
     <button class="btn-list">
-        <a href="/movies">List all Movies</a>
+        <a href="/movies">Se Alle Film</a>
     </button>
 </nav>
 </body>
