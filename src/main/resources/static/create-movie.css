@@ -44,10 +44,17 @@ div {
     user-select: none;
     -webkit-user-select: none;
     touch-action: manipulation;
+    border-radius: 12px;
+    left: 92%;
 }
 
 .buttonClass:hover {
-    color: #BB0A21;
-    background-color: #FFF9FB;
+    color: #FFF9FB;
+    background-color: #3EC300;
 
+}
+.center-box {
+    margin: auto;
+    width: 1124px;
+    padding:10px;
 }

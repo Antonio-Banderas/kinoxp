@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments/head.html(currentPage='create-movie-fragment', customCSS='create-movie.css')">
+
+</head>
 </head>
 <header th:replace="fragments/header.html"></header>
 <body>
-<div class="">
+<div class="container">
+    <div class="center-box">
     <!-- "method" fortæller hvordan form-data skal sendes til en side som er specificeret i "action", altså createCustomer siden. -->
     <form action="/create-movie" method="post">
-        <div class="">
+        <div class="movie-grid">
             <!-- nedenstående gør vi brug af input type "text" hvor name er det field, som vi ønsker at redigere i, og placeholderen er den tekst, som står i tekstfeltet -->
             <label>
                 Titel<input type="text" name="title" placeholder="Eks. James Bond">
@@ -42,10 +42,11 @@
                 Plakat<input type="text" name="movieposter" placeholder="Indtast url">
             </label>
             <div class="">
-                <button type="submit" class="buttonClass" value="Create new movie">Create new movie</button>
+                <button type="submit" class="buttonClass" value="Create new movie">Opret film</button>
             </div>
         </div>
     </form>
+    </div>
 </div>
 </body>
 </html>
