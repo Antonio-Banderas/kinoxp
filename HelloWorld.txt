@@ -1,2 +1,2 @@
-C10
-dddd
+Resolved [org.springframework.web.method.annotation.MethodArgumentTypeMismatchException: Failed to convert value of type 'java.lang.String' to required type 'int'; nested exception is java.lang.NumberFormatException: For input string: "smiley.jpg"]
+fejl når man klikker på filmen på plads 1, muligvis noget med billede lokation at gøre
