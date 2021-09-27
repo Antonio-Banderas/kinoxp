@@ -1,19 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head> <!--//todo skift til fragment, mangler footer -->
-    <meta charset="UTF-8">
-    <title>Film Oversigt</title>
-    <link rel="stylesheet" type="text/css" href="../movielist.css">
-</head>
+<head th:replace="fragments/head.html(currentPage='Movie List', customCSS='/movielist.css')"></head>
 <header th:replace="fragments/header.html"></header>
-<body style="background-color:#343f4c;">
+
 <div class="center-box">
     <h1 style="text-align: center; color:whitesmoke">Film oversigt</h1>
     <ul th:if="${movies.empty}">
         <li colspan="2"> Ingen film tilgængelig </li>
     </ul>
     <ul th:each="singleMovie : ${movies}">
-        <div class="movie-grid">
+        <div class="movie-grid"> <!-- //todo styles i css -->
             <a style="float:left;" th:href="@{'/movies/'+${singleMovie.idmovies}}">
                 <img class="poster" alt="No Poster Found" width="180" height="260" th:src="${singleMovie.movieposter}"/>
             </a>
@@ -31,4 +27,5 @@
     </ul>
 </div>
 </body>
+<footer th:replace="fragments/footer.html"></footer>
 </html>
