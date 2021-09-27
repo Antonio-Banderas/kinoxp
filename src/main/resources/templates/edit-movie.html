@@ -13,7 +13,7 @@
             <section>
                 <form action="/deleteMovie" method="post">
                     <input type="hidden" name="Idmovies" th:value="${movie.getIdmovies}">
-                    <button type="submit">Delete Movie?</button>
+                    <button type="submit">Fjern film?</button>
                 </form>
             </section>
 
@@ -62,7 +62,7 @@
                     <h2>Info:</h2>
                     <input type="text" name="description" th:value="${movie.getDescription}">
                 </div>
-                <button type="submit">Update</button>
+                <button type="submit">Opdatere</button>
             </div>
 
         </div>
