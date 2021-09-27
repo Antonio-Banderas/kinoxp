@@ -21,13 +21,7 @@ justify-content: center;
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
-header{
-    overflow: hidden;
-    height: 200px;
-    background: red;
-}
 .container{
-    background: #343f4c;
     height: 600px;
 }
 h2,h1,h3,span,p{

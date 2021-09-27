@@ -10,12 +10,6 @@
 <section>
     <form action="/editMovie" method="post">
         <div class="container">
-            <section>
-                <form action="/deleteMovie" method="post">
-                    <input type="hidden" name="Idmovies" th:value="${movie.getIdmovies}">
-                    <button type="submit">Fjern film?</button>
-                </form>
-            </section>
 
             <input type="hidden" name="Idmovies" th:value="${movie.getIdmovies}">
 
@@ -27,7 +21,7 @@
             <div class="movie-information">
                 <div class="movie-titel">
                     <h1><input type="text" name="title" th:value="${movie.getTitle}"></h1>
-                        <i class="fas fa-pencil-alt"></i>
+                    <i class="fas fa-pencil-alt"></i>
                     </a>
                 </div>
                 <div class="movie-grid">
@@ -64,9 +58,13 @@
                 </div>
                 <button type="submit">Opdatere</button>
             </div>
-
         </div>
     </form>
+    <form action="/deleteMovie" method="post">
+        <input type="hidden" name="Idmovies" th:value="${movie.getIdmovies}">
+        <button type="submit">Delete Movie?</button>
+    </form>
+
 </section>
 </body>
 <footer th:replace="fragments/footer.html"></footer>
