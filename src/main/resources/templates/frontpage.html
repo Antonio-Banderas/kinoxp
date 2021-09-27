@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head th:replace="fragments/head.html(currentPage='frontpage-fragment', customCSS='frontpage.css')">
-<link rel="stylesheet" type="text/css" href="frontpage.css">
-</head>
+<head th:replace="fragments/head.html(currentPage='KinoXP', customCSS='frontpage.css')"></head>
 <header th:replace="fragments/header.html"></header>
 <body>
 <nav>
-    <button class="btn-create">
-        <a href="/create-movie-page">Opret Film</a>
-    </button>
-    <button class="btn-list">
-        <a href="/movies">Se Alle Film</a>
-    </button>
+
+    <a href="/create-movie-page">
+        <button class="btn-create">Opret film</button>
+    </a>
+
+    <a href="/movies">
+        <button class="btn-list">Vis oversigt over film</button>
+    </a>
 </nav>
 </body>
+<footer th:replace="fragments/footer.html"></footer>
 </html>

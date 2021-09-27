@@ -10,12 +10,6 @@
 <section>
     <form action="/editMovie" method="post">
         <div class="container">
-            <section>
-                <form action="/deleteMovie" method="post">
-                    <input type="hidden" name="Idmovies" th:value="${movie.getIdmovies}">
-                    <button type="submit">Delete Movie?</button>
-                </form>
-            </section>
 
             <input type="hidden" name="Idmovies" th:value="${movie.getIdmovies}">
 
@@ -27,7 +21,7 @@
             <div class="movie-information">
                 <div class="movie-titel">
                     <h1><input type="text" name="title" th:value="${movie.getTitle}"></h1>
-                        <i class="fas fa-pencil-alt"></i>
+                    <i class="fas fa-pencil-alt"></i>
                     </a>
                 </div>
                 <div class="movie-grid">
@@ -37,8 +31,15 @@
                     </div>
 
                     <div class="movie-age">
-                        <h2>Alder:</h2>
-                        <input type="number" name="age" th:value="${movie.getAge}">
+                        <h2>Filmcensur:</h2>
+                            <label for="age">
+                                <select id="age" name="age" th:value="${movie.getAge}">
+                                    <option name="age" label="Tilladt for alle">Tilladt for alle</option>
+                                    <option name="age" label="Frarådes børn under 7 år">Frarådes børn under 7 år</option>
+                                    <option name="age" label="Tilladt for børn fra 11 år">Tilladt for børn fra 11 år</option>
+                                    <option name="age" label="Tilladt for børn fra 15 år">Tilladt for børn fra 15 år</option>
+                                </select>
+                            </label>
                     </div>
 
                     <div class="movie-length">
@@ -62,11 +63,15 @@
                     <h2>Info:</h2>
                     <input type="text" name="description" th:value="${movie.getDescription}">
                 </div>
-                <button type="submit">Update</button>
+                <button type="submit">Opdatere</button>
             </div>
-
         </div>
     </form>
+    <form action="/deleteMovie" method="post">
+        <input type="hidden" name="Idmovies" th:value="${movie.getIdmovies}">
+        <button type="submit">Delete Movie?</button>
+    </form>
+
 </section>
 </body>
 <footer th:replace="fragments/footer.html"></footer>

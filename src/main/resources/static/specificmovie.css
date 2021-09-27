@@ -21,28 +21,14 @@ justify-content: center;
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
-header{
-    overflow: hidden;
-    height: 200px;
-    background: red;
-}
 .container{
-    background: #343f4c;
     height: 600px;
 }
 h2,h1,h3,span,p{
     color: white;
     font-family: 'Montserrat', sans-serif;
 }
-footer{
-    background: #4b4d4c;
-    height: 70px;
-    color: white;
-    display: flex;
-    font-family: 'Montserrat', sans-serif;
-    align-items: center;
-    justify-content: center;
-}
+
 .movie-titel{
     display: flex;
     align-items: center;

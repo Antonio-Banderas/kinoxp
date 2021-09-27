@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head th:replace="fragments/head.html(currentPage='create-movie-fragment', customCSS='create-movie.css')">
-
-</head>
-</head>
+<head th:replace="fragments/head.html(currentPage='create-movie-fragment', customCSS='create-movie.css')"></head>
 <header th:replace="fragments/header.html"></header>
 <body>
 <div class="container">
     <div class="center-box">
+        <h1>Opret film</h1>
     <!-- "method" fortæller hvordan form-data skal sendes til en side som er specificeret i "action", altså createCustomer siden. -->
     <form action="/create-movie" method="post">
         <div class="movie-grid">
@@ -49,4 +47,5 @@
     </div>
 </div>
 </body>
+<footer th:replace="fragments/footer.html"></footer>
 </html>
