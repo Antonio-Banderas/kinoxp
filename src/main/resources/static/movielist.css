@@ -11,13 +11,15 @@
 }
 .movie-info-field {
     width: 178px;
-    height: 180px;
-    text-align: left;
-    color: whitesmoke;
+    height: 260px;
     background-color: #990000;
     position: relative;
     padding: 1px;
+    font-size: 13px;
+    color: whitesmoke;
+    text-align: justify;
 }
+
 .title {
     text-align:center
 }
