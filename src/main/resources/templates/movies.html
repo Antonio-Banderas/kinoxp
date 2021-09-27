@@ -17,7 +17,7 @@
         <div class="movie-info-field">
             <form th:action="@{'/movies/'+${singleMovie.idmovies}}">
                 <h3 class="title" th:text="${singleMovie.title}"/>
-                <b th:text="'Varighed: '"/><span th:text="${singleMovie.length}"/><br/>
+                <b th:text="'Varighed: '"/><span th:text="${singleMovie.length}"/><span> min.</span><br/>
                 <b th:text="'Genre: '"/><span th:text="${singleMovie.genre}"/><br/>
                 <b th:text="'Beskrivelse: '"/><span th:text="${singleMovie.description}"/><br/>
                 <button class="movie-button" type="submit">Film Info</button>

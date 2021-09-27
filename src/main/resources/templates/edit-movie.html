@@ -31,8 +31,15 @@
                     </div>
 
                     <div class="movie-age">
-                        <h2>Alder:</h2>
-                        <input type="number" name="age" th:value="${movie.getAge}">
+                        <h2>Filmcensur:</h2>
+                            <label for="age">
+                                <select id="age" name="age" th:value="${movie.getAge}">
+                                    <option name="age" label="Tilladt for alle">Tilladt for alle</option>
+                                    <option name="age" label="Frarådes børn under 7 år">Frarådes børn under 7 år</option>
+                                    <option name="age" label="Tilladt for børn fra 11 år">Tilladt for børn fra 11 år</option>
+                                    <option name="age" label="Tilladt for børn fra 15 år">Tilladt for børn fra 15 år</option>
+                                </select>
+                            </label>
                     </div>
 
                     <div class="movie-length">
