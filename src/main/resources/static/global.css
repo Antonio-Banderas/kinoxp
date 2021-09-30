@@ -50,7 +50,7 @@ header,
 }
 
 body {
-    background-color: #36f51b;
+    background-color: #1c4f15;
     overflow: auto;
 }
 
@@ -64,9 +64,9 @@ footer{
     color: white;
     font-family: 'Montserrat', sans-serif;
     display: flex;
-    position:fixed;
+
     margin-top: auto;
-    bottom:0;
+
     width:100%;
     height:40px;
     align-items: center;
