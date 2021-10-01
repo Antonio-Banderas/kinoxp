@@ -5,6 +5,12 @@
 </header>
 <body>
 
+<!-- add this movie to a screening -->
+<a style="text-align:center" th:href="@{'/movies/' + ${film.idmovies} + '/screening'}">
+    <button class="button">Opret screening af denne film</button>
+</a>
+<!------------------------------------>
+
 <div class="container">
     <div class="movie-picture">
         <img th:src="${film.movieposter}"/>
@@ -49,7 +55,7 @@
 
         <div class="movie-description">
             <h2>Info:</h2>
-   <p th:text="${film.description}"></p>
+            <p th:text="${film.description}"></p>
         </div>
 
     </div>

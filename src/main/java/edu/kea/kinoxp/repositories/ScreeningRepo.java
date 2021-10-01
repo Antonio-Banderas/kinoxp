@@ -8,6 +8,8 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -28,10 +30,10 @@ public class ScreeningRepo {
     }
 
     public List<Screening> fetchAllScreeningsByDate(String date){
+        System.out.println(date);
         String sql = "SELECT * FROM screenings WHERE screendatetime = ?";
         RowMapper<Screening> rowMapper = new BeanPropertyRowMapper<>(Screening.class);
-        List<Screening> screenings = template.query(sql, rowMapper,date);
-        return screenings;
+        return  template.query(sql, rowMapper,date);
     }
 
     public Movie fetchScreeningByID(int movieID) {
