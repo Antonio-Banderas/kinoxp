@@ -11,7 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-public class MainController {
+public class MovieController {
     @Autowired
     MovieService movieService;
     @Autowired
@@ -48,12 +48,7 @@ public class MainController {
 
     //SC
 
-    @GetMapping("/movies/{id}/edit")
-    public String editMoviePage(Model model, @PathVariable int id){
-        Movie movie = movieService.getMovie(id);
-        model.addAttribute("movie", movie);
-        return "edit-movie.html";
-    }
+
 
 
 
@@ -71,6 +66,12 @@ public class MainController {
         return "redirect:/movies";
     }
 
+    @GetMapping("/movies/{id}/edit")
+    public String editMoviePage(Model model, @PathVariable int id){
+        Movie movie = movieService.getMovie(id);
+        model.addAttribute("movie", movie);
+        return "edit-movie.html";
+    }
 
     @PostMapping("/editMovie")
     public String editMovie(@ModelAttribute Movie m){

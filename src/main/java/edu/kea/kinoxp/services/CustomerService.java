@@ -16,6 +16,7 @@ public class CustomerService {
         return customerRepo.createCustomer(c);
     }
 
-
-
+    public void updateCustomer(Customer c){
+        customerRepo.updateCostumer(c);
+    }
 }
