@@ -1,7 +1,6 @@
 package edu.kea.kinoxp.controllers;
-import edu.kea.kinoxp.models.Customer;
+
 import edu.kea.kinoxp.models.Movie;
-import edu.kea.kinoxp.repositories.MovieRepo;
 import edu.kea.kinoxp.repositories.ScreeningRepo;
 import edu.kea.kinoxp.services.CustomerService;
 import edu.kea.kinoxp.services.MovieService;
@@ -17,8 +16,6 @@ import java.util.List;
 public class MovieController {
     @Autowired
     MovieService movieService;
-    @Autowired
-    CustomerService customerService;
     @Autowired
     ScreeningRepo screeningRepo;
 
