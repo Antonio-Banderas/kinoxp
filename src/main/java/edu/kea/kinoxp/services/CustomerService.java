@@ -19,4 +19,8 @@ public class CustomerService {
     public void updateCustomer(Customer c){
         customerRepo.updateCostumer(c);
     }
+
+    public Customer fetchCustomerByID(int customerID){
+        return customerRepo.fetchCustomerByID(customerID);
+    }
 }

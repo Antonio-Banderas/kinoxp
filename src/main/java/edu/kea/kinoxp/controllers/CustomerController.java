@@ -15,19 +15,19 @@ public class CustomerController {
   @Autowired
   CustomerService customerService;
 
-/*
+
   @GetMapping("/customers/{id}/edit")
   public String editCustomerPage(Model model, @PathVariable int id){
-    Customer customer = customerService.getCustomer(id);
+    Customer customer = customerService.fetchCustomerByID(id);
     model.addAttribute("customer", customer);
-    return "edit-movie.html";
+    return "edit-customer.html";
   }
 
   @PostMapping("/editCustomer")
   public String editCustomer(@ModelAttribute Customer c){
     customerService.updateCustomer(c);
-    return "redirect:/movies/" + c.getId();
+    return "redirect:/frontpage/";
   }
-*/
+
 
 }
