@@ -20,6 +20,13 @@ public class MovieService {
         return movieRepo.fetchAllMovies();
     }
 
+    public List<Movie> listAll(String keyword){
+        if (keyword != null) {
+            return movieRepo.searchMovie(keyword);
+        }
+        return movieRepo.fetchAllMovies();
+    }
+
     public Movie getMovie(int movieID){
         return movieRepo.fetchMovieByID(movieID);
     }

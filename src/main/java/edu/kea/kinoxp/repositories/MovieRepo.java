@@ -38,6 +38,15 @@ public class MovieRepo {
         template.update(sql, m.getTitle(), m.getPrice(), m.getLength(), m.getAge(), m.getGenre(), m.getDescription(), m.getActors(), m.getMovieposter(), m.getIdmovies());
     }
 
+
+    public List<Movie> searchMovie(String keyword){
+            String sql = "SELECT * FROM movies WHERE CONCAT(title, ' ', price, ' ', length) LIKE '%" + keyword + "%'";
+            RowMapper<Movie> rowMapper = new BeanPropertyRowMapper<>(Movie.class);
+            List<Movie> movies = template.query(sql,rowMapper);
+        System.out.println(movies);
+            return movies;
+    }
+
     public void deleteMovie(int id){
         String sql = "DELETE FROM movies where idmovies = ?";
         template.update(sql, id);

@@ -6,9 +6,12 @@ import edu.kea.kinoxp.repositories.ScreeningRepo;
 import edu.kea.kinoxp.services.CustomerService;
 import edu.kea.kinoxp.services.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class MovieController {
@@ -64,6 +67,13 @@ public class MovieController {
       Customer c = new Customer(firstName,lastName,Integer.parseInt(phoneNumber),email);
         customerService.createCustomer(c);
         return "redirect:/movies";
+    }
+    @GetMapping("/searchMovie")
+    public String searchHTML(Model model,@Param("keyword") String keyword){
+        List<Movie> listProducts = movieService.listAll(keyword);
+        model.addAttribute("film", listProducts);
+        model.addAttribute("keyword", keyword);
+        return "searchMovie.html";
     }
 
     @GetMapping("/movies/{id}/edit")
