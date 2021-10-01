@@ -5,16 +5,25 @@ import edu.kea.kinoxp.services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class CustomerController {
+
   @Autowired
   CustomerService customerService;
 
+  @GetMapping("/customer")
+  public String getCustomerPage(){
+    return "create-customer.html";
+  }
+
+  @PostMapping("/create-customer")
+  public String createCustomer(@RequestParam("firstname") String firstName, @RequestParam("lastname") String lastName, @RequestParam("phonenumber") String phoneNumber, @RequestParam("email") String email){
+    Customer c = new Customer(firstName,lastName,Integer.parseInt(phoneNumber),email);
+    customerService.createCustomer(c);
+    return "redirect:/movies";
+  }
 
   @GetMapping("/customers/{id}/edit")
   public String editCustomerPage(Model model, @PathVariable int id){

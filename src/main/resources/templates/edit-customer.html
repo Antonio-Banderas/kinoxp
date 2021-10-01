@@ -1,49 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head th:replace="fragments/head.html(currentPage='create-movie-fragment', customCSS='create-movie.css')"></head>
-<header th:replace="fragments/header.html"></header>
-
-
+<head th:replace="fragments/head.html(currentPage='create-movie-fragment', customCSS='../create-customer.css')"></head>
 <body>
-        <section>
-            <form action="/edit-customer" method="POST">
-
-                <div class="container">
-
-                    <label>
-                    <input type="hidden" name = "idCustomer" th:value="${customer.getIdCustomer}">
-                    </label>
-
-                    <label>
-                    <input type="text" name = "firstName" th:value="${customer.getFirstName}" >
-                    </label>
-
-                    <label>
-                    <input type="text" name = "LastName" th:value="${customer.getLastName}" >
-                    </label>
-
-                    <label>
-                    <input type="number" name = "phoneNumber" th:value="${customer.getPhoneNumber}" >
-                    </label>
-
-                    <label>
-                    <input type="email" name = "email" th:value="${customer.getEmail}" >
-                    </label>
-
-                    <label>
-                    <button type = "submit">Gem</button>
-                    </label>
-
-                </div>
-
-
+    <header th:replace="fragments/header.html"></header>
+    <h2 id="customerTITEL">Kundens oplysninger</h2>
+            <form th:action="@{/edit-customer}" id="customerFORM" method="POST">
+                <input type="hidden" name = "idCustomer" th:value="${customer.getIdCustomer}"/>
+                <lable>Fornavn</lable>
+                <input type="text" name = "firstName" th:value="${customer.getFirstName}"/>
+                <lable>Efternavn</lable>
+                <input type="text" name = "LastName" th:value="${customer.getLastName}"/>
+                <lable>Telefon nummer</lable>
+                <input type="number" name = "phoneNumber" th:value="${customer.getPhoneNumber}"/>
+                <lable>Email</lable>
+                <input type="email" name = "email" th:value="${customer.getEmail}"/>
+                <button type = "submit" id="customerBTN">Gem</button>
             </form>
-        </section>
-
-
-
 </body>
-
-
     <footer th:replace="fragments/footer.html"></footer>
     </html>

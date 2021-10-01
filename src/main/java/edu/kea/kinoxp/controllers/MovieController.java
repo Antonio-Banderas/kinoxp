@@ -1,9 +1,5 @@
 package edu.kea.kinoxp.controllers;
-import edu.kea.kinoxp.models.Customer;
 import edu.kea.kinoxp.models.Movie;
-import edu.kea.kinoxp.repositories.MovieRepo;
-import edu.kea.kinoxp.repositories.ScreeningRepo;
-import edu.kea.kinoxp.services.CustomerService;
 import edu.kea.kinoxp.services.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -14,8 +10,6 @@ import org.springframework.web.bind.annotation.*;
 public class MovieController {
     @Autowired
     MovieService movieService;
-    @Autowired
-    CustomerService customerService;
 
     //SIDER
     @GetMapping("/")
@@ -30,11 +24,6 @@ public class MovieController {
     }
 
 
-    @GetMapping("/customer")
-    public String getCustomerPage(){
-        return "create-customer.html";
-    }
-
     @GetMapping("/movies/{id}")
     public String getSpecificMovie(@PathVariable int id, Model model){
         model.addAttribute("film",movieService.getMovie(id));
@@ -46,12 +35,6 @@ public class MovieController {
         return "create-movie";
     }
 
-    //SC
-
-
-
-
-
     //API METODER
     @PostMapping("/create-movie")
     public String createMovie(@ModelAttribute Movie m){
@@ -59,12 +42,7 @@ public class MovieController {
         return "frontpage";
     }
 
-    @PostMapping("/create-customer")
-    public String createCustomer(@RequestParam("firstname") String firstName,@RequestParam("lastname") String lastName,@RequestParam("phonenumber") String phoneNumber, @RequestParam("email") String email){
-      Customer c = new Customer(firstName,lastName,Integer.parseInt(phoneNumber),email);
-        customerService.createCustomer(c);
-        return "redirect:/movies";
-    }
+
 
     @GetMapping("/movies/{id}/edit")
     public String editMoviePage(Model model, @PathVariable int id){
