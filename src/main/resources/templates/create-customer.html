@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="UTF-8">
-    <title>Create Customer</title>
-</head>
+<head th:replace="fragments/head.html(currentPage='create-movie-fragment', customCSS='create-movie.css')"></head>
 <body>
-<h2>Kundens oplysninger</h2>
+<header th:replace="fragments/header.html"></header>
+<h2 id="customerTITEL">Kundens oplysninger</h2>
 
-<form th:action="@{/create-customer}" method="POST">
+<form th:action="@{/create-customer}" id="customerFORM" method="POST">
     <input type="text" placeholder="Fornavn" name="firstname"/>
     <input type="text" placeholder="Efternavn" name="lastname"/>
-    <input type="number" placeholder="Telefonnummer" name="phonenumber"/>
+    <input type="tel" id="phone"
+           pattern="[0-9]{8}"
+           required placeholder="Telefonnummer" name="phonenumber"/>
     <input type="email" placeholder="Email" name="email">
-    <button type="submit">Send</button>
+    <button type="submit" id="customerBTN">Send</button>
 </form>
 
-
-
 </body>
+<footer th:replace="fragments/footer.html"></footer>
 </html>

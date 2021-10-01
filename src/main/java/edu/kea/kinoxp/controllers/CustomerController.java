@@ -23,10 +23,11 @@ public class CustomerController {
     return "edit-customer.html";
   }
 
-  @PostMapping("/editCustomer")
+  @PostMapping("/edit-customer")
   public String editCustomer(@ModelAttribute Customer c){
+    System.out.println("working"+c.toString());
     customerService.updateCustomer(c);
-    return "redirect:/frontpage/";
+    return "redirect:/";
   }
 
 

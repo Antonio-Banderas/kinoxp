@@ -5,11 +5,13 @@ import javax.persistence.Id;
 
 public class Customer {
     @Id
-    private int id;
+    private int idCustomer;
     private String firstName;
     private String lastName;
     private int phoneNumber;
     private String email;
+
+
 
     public Customer(String firstName, String lastName, int phoneNumber, String email) {
         this.firstName = firstName;
@@ -17,16 +19,17 @@ public class Customer {
         this.phoneNumber = phoneNumber;
         this.email = email;
     }
+
     public Customer(){
-
     }
 
-    public int getId() {
-        return id;
+
+    public int getIdCustomer() {
+        return idCustomer;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setIdCustomer(int idCustomer) {
+        this.idCustomer = idCustomer;
     }
 
     public String getFirstName() {
@@ -59,5 +62,17 @@ public class Customer {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + idCustomer +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", phoneNumber=" + phoneNumber +
+                ", email='" + email + '\'' +
+                '}';
     }
 }
