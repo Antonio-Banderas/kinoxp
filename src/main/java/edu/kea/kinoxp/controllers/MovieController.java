@@ -44,12 +44,7 @@ public class MovieController {
 
     //SC
 
-    @GetMapping("/movies/{id}/edit")
-    public String editMoviePage(Model model, @PathVariable int id){
-        Movie movie = movieService.getMovie(id);
-        model.addAttribute("movie", movie);
-        return "edit-movie.html";
-    }
+
 
 
 
@@ -66,6 +61,12 @@ public class MovieController {
         return "redirect:/movies";
     }
 
+    @GetMapping("/movies/{id}/edit")
+    public String editMoviePage(Model model, @PathVariable int id){
+        Movie movie = movieService.getMovie(id);
+        model.addAttribute("movie", movie);
+        return "edit-movie.html";
+    }
 
     @PostMapping("/editMovie")
     public String editMovie(@ModelAttribute Movie m){
