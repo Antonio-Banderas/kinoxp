@@ -25,6 +25,12 @@ public class MainController {
         return "movies.html";
     }
 
+
+    @GetMapping("/customer")
+    public String getCustomerPage(){
+        return "create-customer.html";
+    }
+
     @GetMapping("/movies/{id}")
     public String getSpecificMovie(@PathVariable int id, Model model){
         model.addAttribute("film",movieService.getMovie(id));
@@ -53,6 +59,13 @@ public class MainController {
         movieService.createMovie(m);
         return "frontpage";
     }
+
+    @PostMapping("/create-customer")
+    public String createCustomer(@RequestParam("firstname") String firstName,@RequestParam("lastname") String lastName,@RequestParam("phonenumber") String phoneNumber, @RequestParam("email") String email){
+
+        return "redirect:/movies";
+    }
+
 
     @PostMapping("/editMovie")
     public String editMovie(@ModelAttribute Movie m){
