@@ -16,6 +16,16 @@
     color: white;
     padding: 20px;
 }
+
+#deleteBTN{
+    position: absolute;
+    left: 125px;
+    bottom: 125px;
+    width: 150px;
+    background: red;
+    color: white;
+    padding: 20px;
+}
 input[type=text], select {
     width: 100%;
     padding: 12px 20px;
@@ -45,7 +55,7 @@ input[type=number], select {
 }
 
 label {
-    color:white;
+    color: white;
 }
 
 input[type=tel], select {
