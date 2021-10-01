@@ -13,9 +13,15 @@ public class ScreeningService {
     @Autowired
     ScreeningRepo screeningRepo;
 
+    // create screening to date
+
+    // get all by date
     public List<Screening> getAllScreeningsByDate(String date) {
+        System.out.println(date);
         return screeningRepo.fetchAllScreeningsByDate(date);
     }
+
+    // create screening
 
 
 }

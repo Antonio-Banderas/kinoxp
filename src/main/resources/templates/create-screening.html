@@ -1,11 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>film.getId</title>
-    <title>otherMovies.getId</title>
+    <title>SCREENING</title>
 </head>
 <body>
+<p>our movie:</p>
+<h1 th:text="${film.title}"></h1>
 
+<p>screening this day:</p>
+<!--
+<h1 th:text="${other.get(0).getMovieId()}"></h1>
+
+<tr th:each="other: ${other}">
+    <td th:text="${other.get(0).getMovieId()}" />
+</tr>
+-->
 </body>
 </html>
