@@ -36,7 +36,7 @@ public class MovieController {
     @GetMapping("/movies/{id}")
     public String getSpecificMovie(@PathVariable int id, Model model){
         model.addAttribute("film",movieService.getMovie(id));
-        model.addAttribute("screening",screeningRepo.fetchAllScreeningsById(id) );
+        model.addAttribute("screenings",screeningRepo.fetchAllScreeningsById(id) );
         return "movie.html";
     }
 

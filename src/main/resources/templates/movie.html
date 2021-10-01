@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head th:replace="fragments/head.html"></head>
 <header th:replace="fragments/header.html">
 </header>
@@ -60,9 +60,31 @@
 
     </div>
 </div>
+<div>
+    <ul th:each="screening : ${screenings}">
+
+            <div>
+                <h2 th:text="'Dato: ' + ${screening.screendatetime}"></h2>
+            </div>
+
+            <div>
+                <h2>Tidspunkt: </h2>
+                <p th:text=" fefd"> </p>
+            </div>
+
+            <div>
+                <h2 th:text="'Sal: ' + ${screening.cinemas_idcinemahall}"></h2>
+
+            </div>
 
 
-<footer th:replace="fragments/footer.html"></footer>
+        </a>
+
+
+    </ul>
+</div>
+
+
 </body>
-
+<footer th:replace="fragments/footer.html"></footer>
 </html>
