@@ -12,5 +12,19 @@
 
 <h1 th:text="${other.get(0).getMovies_idmovies()}"></h1>
 
+
+<form action="/create-screening" method="post">
+    <div class="screening-grid">
+
+        <input type="hidden" name="movies_idmovies" th:value="${film.getIdmovies()}">
+        <input type="date" id="start" name="date">
+        <input type="hidden" name="time" th:value="${1}">
+        <input type="hidden" name="cinemas_idcinemahall" th:value="${2}">
+
+        <button type="submit" class="buttonClass" value="Create new movie">Opret film</button>
+    </div>
+    </div>
+</form>
+
 </body>
 </html>

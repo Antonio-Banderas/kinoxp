@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import javax.persistence.Id;
+import java.util.Date;
 
 
 @Data
@@ -13,8 +14,9 @@ public class Screening {
 
     @Id
     int idscreening;
-    String screendatetime;
     int movies_idmovies; //33
+    Date date;
+    String time;
     int cinemas_idcinemahall; // 11-01-9821 (varchar)
 
 }

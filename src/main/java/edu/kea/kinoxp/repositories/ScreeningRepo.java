@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -17,40 +18,16 @@ public class ScreeningRepo {
     @Autowired
     JdbcTemplate template;
 
-    public Movie createScreening(Movie m) {
-        String sql = "INSERT INTO screenings(idmovies, title, price, length, age, genre, description, actors, movieposter) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        template.update(sql, m.getIdmovies(), m.getTitle(), m.getPrice(), m.getLength(), m.getAge(), m.getGenre(), m.getDescription(), m.getActors(), m.getMovieposter());
+    public Screening createScreening(Screening s) {
+        String sql = "INSERT INTO screenings(idscreening, movies_idmovies, date, time, cinemas_idcinemahall) VALUES (?, ?, ?, ?, ?)";
+        template.update(sql, s.getIdscreening(),s.getMovies_idmovies(),s.getDate(),s.getTime(),s.getCinemas_idcinemahall());
         return null;
     }
 
-    public List<Movie> fetchAllScreenings() {
-        String sql = "SELECT * FROM movies";
-        RowMapper<Movie> rowMapper = new BeanPropertyRowMapper<>(Movie.class);
-        return template.query(sql, rowMapper);
-    }
-
-    public List<Screening> fetchAllScreeningsByDate(String screendatetime){
-        System.out.println(screendatetime);
-        String sql = "SELECT * FROM screenings WHERE screendatetime = ?";
+    public List<Screening> fetchAllScreeningsByDate(Date today){
+        String sql = "SELECT * FROM screenings WHERE date = ?";
         RowMapper<Screening> rowMapper = new BeanPropertyRowMapper<>(Screening.class);
-        return  template.query(sql, rowMapper,screendatetime);
-    }
-
-    public Movie fetchScreeningByID(int movieID) {
-        String sql = "SELECT * FROM movies WHERE idmovies = ?";
-        RowMapper<Movie> rowMapper = new BeanPropertyRowMapper<>(Movie.class);
-        Movie movie = template.queryForObject(sql, rowMapper, movieID);
-        return movie;
-    }
-
-    public void updateScreening(Movie m){
-        String sql = "UPDATE movies SET title = ?, price = ?, length = ?, age = ?, genre = ?, description = ?, actors = ?, movieposter = ? WHERE idmovies = ?";
-        template.update(sql, m.getTitle(), m.getPrice(), m.getLength(), m.getAge(), m.getGenre(), m.getDescription(), m.getActors(), m.getMovieposter(), m.getIdmovies());
-    }
-
-    public void deleteScreening(int id){
-        String sql = "DELETE FROM movies where idmovies = ?";
-        template.update(sql, id);
+        return  template.query(sql, rowMapper,today);
     }
 
     public List<Screening> fetchAllScreeningsById(int id){
