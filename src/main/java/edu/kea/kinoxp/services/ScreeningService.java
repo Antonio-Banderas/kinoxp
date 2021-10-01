@@ -19,5 +19,10 @@ public class ScreeningService {
 
     // create screening
 
+    public List<Screening> fetchAllScreeningsById(int id) {
+        return screeningRepo.fetchAllScreeningsById(id);
+    }
+
+
 
 }

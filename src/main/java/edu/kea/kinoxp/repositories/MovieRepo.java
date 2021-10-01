@@ -1,6 +1,7 @@
 package edu.kea.kinoxp.repositories;
 
 import edu.kea.kinoxp.models.Movie;
+import edu.kea.kinoxp.models.Screening;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;

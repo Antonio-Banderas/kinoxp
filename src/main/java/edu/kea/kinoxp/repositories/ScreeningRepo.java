@@ -52,4 +52,10 @@ public class ScreeningRepo {
         String sql = "DELETE FROM movies where idmovies = ?";
         template.update(sql, id);
     }
+
+    public List<Screening> fetchAllScreeningsById(int id){
+        String sql = "SELECT * FROM screenings WHERE movies_idmovies = ?";
+        RowMapper<Screening> rowMapper = new BeanPropertyRowMapper<>(Screening.class);
+        return template.query(sql, rowMapper,id);
+    }
 }

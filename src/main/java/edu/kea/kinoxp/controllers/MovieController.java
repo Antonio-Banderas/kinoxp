@@ -1,5 +1,9 @@
 package edu.kea.kinoxp.controllers;
+import edu.kea.kinoxp.models.Customer;
 import edu.kea.kinoxp.models.Movie;
+import edu.kea.kinoxp.repositories.MovieRepo;
+import edu.kea.kinoxp.repositories.ScreeningRepo;
+import edu.kea.kinoxp.services.CustomerService;
 import edu.kea.kinoxp.services.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +14,10 @@ import org.springframework.web.bind.annotation.*;
 public class MovieController {
     @Autowired
     MovieService movieService;
+    @Autowired
+    CustomerService customerService;
+    @Autowired
+    ScreeningRepo screeningRepo;
 
     //SIDER
     @GetMapping("/")
@@ -27,6 +35,7 @@ public class MovieController {
     @GetMapping("/movies/{id}")
     public String getSpecificMovie(@PathVariable int id, Model model){
         model.addAttribute("film",movieService.getMovie(id));
+        model.addAttribute("screening",screeningRepo.fetchAllScreeningsById(id));
         return "movie.html";
     }
 
