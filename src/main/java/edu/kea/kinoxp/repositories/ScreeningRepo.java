@@ -56,6 +56,6 @@ public class ScreeningRepo {
     public List<Screening> fetchAllScreeningsById(int id){
         String sql = "SELECT * FROM screenings WHERE movies_idmovies = ?";
         RowMapper<Screening> rowMapper = new BeanPropertyRowMapper<>(Screening.class);
-        return template.query(sql, rowMapper,id);
+        return template.query(sql, rowMapper, id);
     }
 }
