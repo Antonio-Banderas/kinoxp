@@ -19,6 +19,8 @@ public class MovieController {
     MovieService movieService;
     @Autowired
     CustomerService customerService;
+    @Autowired
+    ScreeningRepo screeningRepo;
 
     //SIDER
     @GetMapping("/")
@@ -41,6 +43,7 @@ public class MovieController {
     @GetMapping("/movies/{id}")
     public String getSpecificMovie(@PathVariable int id, Model model){
         model.addAttribute("film",movieService.getMovie(id));
+        model.addAttribute("screening",screeningRepo.fetchAllScreeningsById(id) );
         return "movie.html";
     }
 
@@ -68,6 +71,7 @@ public class MovieController {
         customerService.createCustomer(c);
         return "redirect:/movies";
     }
+
     @GetMapping("/searchMovie")
     public String searchHTML(Model model,@Param("keyword") String keyword){
         List<Movie> listProducts = movieService.listAll(keyword);

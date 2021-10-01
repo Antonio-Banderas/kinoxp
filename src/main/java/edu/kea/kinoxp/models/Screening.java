@@ -12,9 +12,9 @@ import javax.persistence.Id;
 public class Screening {
 
     @Id
-    int screeningId;
-
-    int movieId; //33
-    int Date; // 11-01-9821 (varchar)
+    int idscreening;
+    String screendatetime;
+    int movies_idmovies; //33
+    int cinemas_idcinemahall; // 11-01-9821 (varchar)
 
 }
