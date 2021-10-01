@@ -1,7 +1,9 @@
 package edu.kea.kinoxp.controllers;
+import edu.kea.kinoxp.models.Customer;
 import edu.kea.kinoxp.models.Movie;
 import edu.kea.kinoxp.repositories.MovieRepo;
 import edu.kea.kinoxp.repositories.ScreeningRepo;
+import edu.kea.kinoxp.services.CustomerService;
 import edu.kea.kinoxp.services.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -12,6 +14,8 @@ import org.springframework.web.bind.annotation.*;
 public class MainController {
     @Autowired
     MovieService movieService;
+    @Autowired
+    CustomerService customerService;
 
     //SIDER
     @GetMapping("/")
@@ -61,8 +65,9 @@ public class MainController {
     }
 
     @PostMapping("/create-customer")
-    public String createCustomer(@RequestParam("firstname") String firstName,@RequestParam("lastname") String lastName,@RequestParam("phonenumber") String phoneNumber, @RequestParam("email") String email){
-
+    public String createCustomer(@RequestParam("firstname") String firstName,@RequestParam("lastname") String lastName,@RequestParam("phonenumber") int phoneNumber, @RequestParam("email") String email){
+      Customer c = new Customer(firstName,lastName,phoneNumber,email);
+        customerService.createCustomer(c);
         return "redirect:/movies";
     }
 
