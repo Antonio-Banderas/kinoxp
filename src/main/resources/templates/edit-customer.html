@@ -4,18 +4,24 @@
 <body>
     <header th:replace="fragments/header.html"></header>
     <h2 id="customerTITEL">Kundens oplysninger</h2>
-            <form th:action="@{/edit-customer}" id="customerFORM" method="POST">
+        <div id="customerFORM">
+            <form th:action="@{/edit-customer}" method="POST">
                 <input type="hidden" name = "idCustomer" th:value="${customer.getIdCustomer}"/>
-                <lable>Fornavn</lable>
+                <label>Fornavn</label>
                 <input type="text" name = "firstName" th:value="${customer.getFirstName}"/>
-                <lable>Efternavn</lable>
+                <label>Efternavn</label>
                 <input type="text" name = "LastName" th:value="${customer.getLastName}"/>
-                <lable>Telefon nummer</lable>
-                <input type="number" name = "phoneNumber" th:value="${customer.getPhoneNumber}"/>
-                <lable>Email</lable>
+                <label>Telefon nummer</label>
+                <input type="tel" id="phone" pattern="[0-9]{8}" name = "phoneNumber" th:value="${customer.getPhoneNumber}"/>
+                <label>Email</label>
                 <input type="email" name = "email" th:value="${customer.getEmail}"/>
                 <button type = "submit" id="customerBTN">Gem</button>
             </form>
+    <form action="/deleteCustomer" method="post">
+        <input type="hidden" name="idCustomer" th:value="${customer.getIdCustomer}">
+        <button type="submit" id="deleteBTN">Slet Kunde</button>
+    </form>
+        </div>
 </body>
     <footer th:replace="fragments/footer.html"></footer>
     </html>
