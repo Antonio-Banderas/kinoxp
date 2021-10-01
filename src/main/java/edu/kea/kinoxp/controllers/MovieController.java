@@ -60,8 +60,8 @@ public class MovieController {
     }
 
     @PostMapping("/create-customer")
-    public String createCustomer(@RequestParam("firstname") String firstName,@RequestParam("lastname") String lastName,@RequestParam("phonenumber") int phoneNumber, @RequestParam("email") String email){
-      Customer c = new Customer(firstName,lastName,phoneNumber,email);
+    public String createCustomer(@RequestParam("firstname") String firstName,@RequestParam("lastname") String lastName,@RequestParam("phonenumber") String phoneNumber, @RequestParam("email") String email){
+      Customer c = new Customer(firstName,lastName,Integer.parseInt(phoneNumber),email);
         customerService.createCustomer(c);
         return "redirect:/movies";
     }
