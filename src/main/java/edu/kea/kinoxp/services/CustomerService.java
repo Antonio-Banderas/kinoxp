@@ -23,4 +23,8 @@ public class CustomerService {
     public Customer fetchCustomerByID(int customerID){
         return customerRepo.fetchCustomerByID(customerID);
     }
+
+    public void deleteCustomer(int idCustomer) {
+        customerRepo.deleteCustomer(idCustomer);
+    }
 }

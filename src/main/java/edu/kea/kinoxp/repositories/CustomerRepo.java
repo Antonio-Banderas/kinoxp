@@ -31,5 +31,10 @@ public class CustomerRepo {
         return customer;
     }
 
+    public void deleteCustomer(int customerID){
+        String sql = "DELETE FROM customers where idcustomer = ?";
+        template.update(sql, customerID);
+    }
+
 
 }

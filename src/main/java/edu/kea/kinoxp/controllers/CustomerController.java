@@ -38,6 +38,11 @@ public class CustomerController {
     customerService.updateCustomer(c);
     return "redirect:/";
   }
+  @PostMapping("/deleteCustomer")
+  public String deleteCustomer(@RequestParam int idCustomer){
+    customerService.deleteCustomer(idCustomer);
+    return "redirect:/movies";
+  }
 
 
 }
