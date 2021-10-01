@@ -35,10 +35,6 @@ public class MovieController {
     }
 
 
-    @GetMapping("/customer")
-    public String getCustomerPage(){
-        return "create-customer.html";
-    }
 
     @GetMapping("/movies/{id}")
     public String getSpecificMovie(@PathVariable int id, Model model){
@@ -65,12 +61,6 @@ public class MovieController {
         return "frontpage";
     }
 
-    @PostMapping("/create-customer")
-    public String createCustomer(@RequestParam("firstname") String firstName,@RequestParam("lastname") String lastName,@RequestParam("phonenumber") String phoneNumber, @RequestParam("email") String email){
-      Customer c = new Customer(firstName,lastName,Integer.parseInt(phoneNumber),email);
-        customerService.createCustomer(c);
-        return "redirect:/movies";
-    }
 
     @GetMapping("/searchMovie")
     public String searchHTML(Model model,@Param("keyword") String keyword){
