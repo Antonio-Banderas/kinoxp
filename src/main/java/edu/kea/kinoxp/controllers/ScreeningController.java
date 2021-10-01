@@ -16,16 +16,17 @@ public class ScreeningController {
 
     @Autowired
     MovieService movieService;
+    @Autowired
     ScreeningService screeningService;
 
 
     @GetMapping("/movies/{id}/screening")
     public String renderCreateScreening(@PathVariable int id, Model model){
 
-        String today = "mandag"; // this should be a service that finds current date
+        String screendatetime = "mandag"; // this should be a service that finds current date
         System.out.println("trash");
-        System.out.println(today);
-        List<Screening> list = screeningService.getAllScreeningsByDate(today);
+
+        List<Screening> list = screeningService.getAllScreeningsByDate(screendatetime);
 
         model.addAttribute("film",movieService.getMovie(id));
         model.addAttribute("other", list);

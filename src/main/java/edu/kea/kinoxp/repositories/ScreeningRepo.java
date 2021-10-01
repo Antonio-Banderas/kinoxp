@@ -29,11 +29,11 @@ public class ScreeningRepo {
         return template.query(sql, rowMapper);
     }
 
-    public List<Screening> fetchAllScreeningsByDate(String date){
-        System.out.println(date);
+    public List<Screening> fetchAllScreeningsByDate(String screendatetime){
+        System.out.println(screendatetime);
         String sql = "SELECT * FROM screenings WHERE screendatetime = ?";
         RowMapper<Screening> rowMapper = new BeanPropertyRowMapper<>(Screening.class);
-        return  template.query(sql, rowMapper,date);
+        return  template.query(sql, rowMapper,screendatetime);
     }
 
     public Movie fetchScreeningByID(int movieID) {
