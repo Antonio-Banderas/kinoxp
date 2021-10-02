@@ -24,10 +24,10 @@ public class ScreeningRepo {
         return null;
     }
 
-    public List<Screening> fetchAllScreeningsByDate(Date today){
-        String sql = "SELECT * FROM screenings WHERE date = ?";
+    public List<Screening> fetchAllScreeningsByDate(){
+        String sql = "SELECT * FROM screenings WHERE date = CURRENT_DATE";
         RowMapper<Screening> rowMapper = new BeanPropertyRowMapper<>(Screening.class);
-        return  template.query(sql, rowMapper,today);
+        return  template.query(sql, rowMapper);
     }
 
     public List<Screening> fetchAllScreeningsById(int id){

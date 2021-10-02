@@ -27,13 +27,8 @@ public class ScreeningController {
     @GetMapping("/movies/{id}/screening")
     public String renderCreateScreening(@PathVariable int id, Model model){
 
-        String screendatetime = "mandag"; // this should be a service that finds current date
-
-        Date today = new java.sql.Date();
-        System.out.println(today);
-
-        model.addAttribute("film",movieService.getMovie(id));
-        model.addAttribute("other",screeningService.getAllScreeningsByDate(today));
+        model.addAttribute("movie",movieService.getMovie(id));
+        model.addAttribute("screenings",screeningService.getAllScreeningsByDate());
 
         return "create-screening";
     }

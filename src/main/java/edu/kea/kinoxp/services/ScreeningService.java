@@ -14,8 +14,8 @@ public class ScreeningService {
     @Autowired
     ScreeningRepo screeningRepo;
 
-    public List<Screening> getAllScreeningsByDate(Date today) {
-        return screeningRepo.fetchAllScreeningsByDate(today);
+    public List<Screening> getAllScreeningsByDate() {
+        return screeningRepo.fetchAllScreeningsByDate();
     }
 
     // create screening
