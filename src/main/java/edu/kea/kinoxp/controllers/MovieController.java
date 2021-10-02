@@ -32,11 +32,10 @@ public class MovieController {
     }
 
 
-
     @GetMapping("/movies/{id}")
     public String getSpecificMovie(@PathVariable int id, Model model){
         model.addAttribute("film",movieService.getMovie(id));
-        model.addAttribute("screenings",screeningRepo.fetchAllScreeningsById(id) );
+        model.addAttribute("screenings",screeningRepo.fetchAllScreeningsById(id));
         return "movie.html";
     }
 
@@ -45,19 +44,13 @@ public class MovieController {
         return "create-movie";
     }
 
-    //SC
 
-
-
-
-
-    //API METODER
+    //API METODER <!> ikke api metoder
     @PostMapping("/create-movie")
     public String createMovie(@ModelAttribute Movie m){
         movieService.createMovie(m);
         return "frontpage";
     }
-
 
     @GetMapping("/searchMovie")
     public String searchHTML(Model model,@Param("keyword") String keyword){

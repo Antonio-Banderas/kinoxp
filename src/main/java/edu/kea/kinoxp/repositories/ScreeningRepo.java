@@ -20,7 +20,7 @@ public class ScreeningRepo {
 
     public Screening createScreening(Screening s) {
         String sql = "INSERT INTO screenings(idscreening, movies_idmovies, date, time, cinemas_idcinemahall) VALUES (?, ?, ?, ?, ?)";
-        template.update(sql, s.getIdscreening(),s.getMovies_idmovies(),s.getDate(),s.getTime(),s.getCinemas_idcinemahall());
+        template.update(sql, s.getIdscreening(),s.getMovies_idmovies(),s.getDate(),s.getTimeslot(),s.getCinemas_idcinemahall());
         return null;
     }
 
