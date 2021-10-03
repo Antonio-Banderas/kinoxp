@@ -6,10 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.SingleColumnRowMapper;
 import org.springframework.stereotype.Repository;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Repository
@@ -17,39 +18,33 @@ public class ScreeningRepo {
     @Autowired
     JdbcTemplate template;
 
-    public Movie createScreening(Movie m) {
-        String sql = "INSERT INTO screenings(idmovies, title, price, length, age, genre, description, actors, movieposter) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
-        template.update(sql, m.getIdmovies(), m.getTitle(), m.getPrice(), m.getLength(), m.getAge(), m.getGenre(), m.getDescription(), m.getActors(), m.getMovieposter());
+    public Screening createScreening(Screening s) {
+        String sql = "INSERT INTO screenings(idscreening, movies_idmovies, date, timeslot, cinemas_idcinemahall) VALUES (?, ?, ?, ?, ?)";
+        template.update(sql, s.getIdscreening(),s.getMovies_idmovies(),s.getDate(),s.getTimeslot(),s.getCinemas_idcinemahall());
         return null;
     }
 
-    public List<Movie> fetchAllScreenings() {
-        String sql = "SELECT * FROM movies";
-        RowMapper<Movie> rowMapper = new BeanPropertyRowMapper<>(Movie.class);
-        return template.query(sql, rowMapper);
-    }
-
-    public List<Screening> fetchAllScreeningsByDate(String screendatetime){
-        System.out.println(screendatetime);
-        String sql = "SELECT * FROM screenings WHERE screendatetime = ?";
+    public List<Screening> fetchAllScreeningsByDate(){
+        String sql = "SELECT * FROM screenings WHERE date = CURRENT_DATE";
         RowMapper<Screening> rowMapper = new BeanPropertyRowMapper<>(Screening.class);
-        return  template.query(sql, rowMapper,screendatetime);
+        return  template.query(sql, rowMapper);
     }
 
-    public Movie fetchScreeningByID(int movieID) {
-        String sql = "SELECT * FROM movies WHERE idmovies = ?";
-        RowMapper<Movie> rowMapper = new BeanPropertyRowMapper<>(Movie.class);
-        Movie movie = template.queryForObject(sql, rowMapper, movieID);
-        return movie;
+    public List<Screening> fetchAllScreeningsByDateAndHall(int cinemas_idcinemahall){
+        String sql = "SELECT * FROM screenings WHERE date = CURRENT_DATE && cinemas_idcinemahall = ?";
+        RowMapper<Screening> rowMapper = new BeanPropertyRowMapper<>(Screening.class);
+        return  template.query(sql, rowMapper, cinemas_idcinemahall);
     }
 
-    public void updateScreening(Movie m){
-        String sql = "UPDATE movies SET title = ?, price = ?, length = ?, age = ?, genre = ?, description = ?, actors = ?, movieposter = ? WHERE idmovies = ?";
-        template.update(sql, m.getTitle(), m.getPrice(), m.getLength(), m.getAge(), m.getGenre(), m.getDescription(), m.getActors(), m.getMovieposter(), m.getIdmovies());
+    public List<Screening> fetchAllScreeningsById(int id){
+        String sql = "SELECT * FROM screenings WHERE movies_idmovies = ? ORDER BY date, timeslot, cinemas_idcinemahall ASC";
+        RowMapper<Screening> rowMapper = new BeanPropertyRowMapper<>(Screening.class);
+        return template.query(sql, rowMapper, id);
     }
 
-    public void deleteScreening(int id){
-        String sql = "DELETE FROM movies where idmovies = ?";
-        template.update(sql, id);
+    public List<LocalDate> fetchAllDatesForMovie(int movieid) {
+        String sql = "SELECT DISTINCT date FROM screenings WHERE (movies_idmovies = ?) and (date > curdate()) or (date = curdate()) ORDER BY date ASC;";
+        SingleColumnRowMapper<LocalDate> rowMapper = new SingleColumnRowMapper<>(LocalDate.class);
+        return template.query(sql, rowMapper, movieid);
     }
 }

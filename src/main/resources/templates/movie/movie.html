@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments/head.html(currentPage='create-movie-fragment',
+customCSS='specificmovie.css')"></head>
+
+<header th:replace="fragments/header.html">
+</header>
+<body>
+
+<!-- add this movie to a screening -->
+<a style="text-align:center" th:href="@{'/movies/' + ${film.idmovies} + '/screening'}">
+    <button class="button">Opret screening af denne film</button>
+</a>
+<!----------------------------------->
+
+<div class="container">
+    <div class="movie-picture">
+        <img th:src="${film.movieposter}"/>
+    </div>
+    <div class="movie-information">
+        <div class="movie-titel">
+            <h1 th:text="${film.title}"></h1>
+            <a th:href="@{'/movies/' + ${film.idmovies} + '/edit'}">
+                <i class="fas fa-pencil-alt"></i>
+            </a>
+
+        </div>
+
+        <div class="movie-grid">
+            <div class="movie-price">
+                <h2>Pris:</h2>
+                <span th:text="${film.price}"></span>
+                <span> kr.</span>
+            </div>
+
+            <div class="movie-age">
+                <h2>Filmcensur:</h2>
+                <span th:text="${film.age}"></span>
+            </div>
+
+            <div class="movie-length">
+                <h2>Varighed:</h2>
+                <span th:text="${film.length}"></span>
+                <span> min.</span>
+            </div>
+
+            <div class="movie-genre">
+                <h2>Genre:</h2>
+                <span th:text="${film.genre}"></span>
+            </div>
+
+            <div class="movie-actors">
+                <h2>Skuespillere:</h2>
+                <span th:text="${film.actors}"></span>
+            </div>
+        </div>
+
+        <div class="movie-description">
+            <h2>Info:</h2>
+            <p th:text="${film.description}"></p>
+        </div>
+
+    </div>
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th class="first-column-width"><h3>Dato</h3></th>
+        <th><h3>Tid</h3></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="date : ${movieDates}">
+        <td class="first-column-width">
+            <h3 th:text="'Dato: ' + ${#temporals.format(date, 'dd-MM')}"></h3>
+        </td>
+        <td class="second-column-width">
+            <div th:each="screening: ${screenings}">
+                <div th:if="${date} == ${screening.date}">
+                    <a th:href="@{'/screenings/'+${screening.idscreening}}" >
+                        <div  class="timeslot">
+                            <span th:text="'Sal: ' + ${screening.cinemas_idcinemahall}"/>
+                            <div th:switch="${screening.timeslot}">
+                                <span th:case="'1'"> Kl. 12:00</span>
+                                <span th:case="'2'"> Kl. 14:45</span>
+                                <span th:case="'3'"> KL. 17:30</span>
+                                <span th:case="'4'"> KL. 20:15</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+<div>
+    <ul th:each="screening : ${screenings}">
+        <li>
+            <div>
+                <h3 th:text="'Dato: ' + ${#temporals.format(screening.date, 'dd MM')}"></h3>
+            </div>
+            <div th:switch="${screening.timeslot}">
+                <h3 th:case="'1'">Tidspunkt: 12:00 </h3>
+                <h3 th:case="'2'">Tidspunkt: 14:45 </h3>
+                <h3 th:case="'3'">Tidspunkt: 17:30 </h3>
+                <h3 th:case="'4'">Tidspunkt: 20:15 </h3>
+            </div>
+            <div>
+                <h3 th:text="'Sal: ' + ${screening.cinemas_idcinemahall}"></h3>
+            </div>
+        </li>
+        </a>
+    </ul>
+</div>
+
+</body>
+
+<footer th:replace="fragments/footer.html"></footer>
+
+</html>

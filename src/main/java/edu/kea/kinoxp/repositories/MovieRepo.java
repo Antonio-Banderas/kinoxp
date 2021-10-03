@@ -1,6 +1,7 @@
 package edu.kea.kinoxp.repositories;
 
 import edu.kea.kinoxp.models.Movie;
+import edu.kea.kinoxp.models.Screening;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
@@ -36,6 +37,15 @@ public class MovieRepo {
     public void updateMovie(Movie m){
         String sql = "UPDATE movies SET title = ?, price = ?, length = ?, age = ?, genre = ?, description = ?, actors = ?, movieposter = ? WHERE idmovies = ?";
         template.update(sql, m.getTitle(), m.getPrice(), m.getLength(), m.getAge(), m.getGenre(), m.getDescription(), m.getActors(), m.getMovieposter(), m.getIdmovies());
+    }
+
+
+    public List<Movie> searchMovie(String keyword){
+            String sql = "SELECT * FROM movies WHERE CONCAT(title, ' ', price, ' ', length) LIKE '%" + keyword + "%'";
+            RowMapper<Movie> rowMapper = new BeanPropertyRowMapper<>(Movie.class);
+            List<Movie> movies = template.query(sql,rowMapper);
+        System.out.println(movies);
+            return movies;
     }
 
     public void deleteMovie(int id){
