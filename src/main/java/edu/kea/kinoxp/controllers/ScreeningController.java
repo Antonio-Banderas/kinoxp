@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -27,19 +26,22 @@ public class ScreeningController {
     public String renderCreateScreening(@PathVariable int id, Model model){
 
         model.addAttribute("movie",movieService.getMovie(id));
-        model.addAttribute("screenings",screeningService.getAllScreeningsByDate());
+        model.addAttribute("screenings1",screeningService.getAllScreeningsByDateAndHall(1));
+        model.addAttribute("screenings2",screeningService.getAllScreeningsByDateAndHall(2));
 
-        return "create-screening";
+        return "screening/create-screening";
     }
 
     @PostMapping("/create-screening")
     public String createScreening(@ModelAttribute Screening s){
+        System.out.println(s.getDate().toString());
         screeningService.createScreening(s);
-        return "frontpage";
+        return "index/frontpage";
+
     }
 
     @GetMapping("/screenings/{id}")
     public String seatSelection(@PathVariable int id, Model model) {
-        return "cinema-seats";
+        return "screening/cinema-seats";
     }
 }

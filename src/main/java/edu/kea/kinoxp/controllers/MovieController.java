@@ -1,7 +1,6 @@
 package edu.kea.kinoxp.controllers;
 
 import edu.kea.kinoxp.models.Movie;
-import edu.kea.kinoxp.services.CustomerService;
 import edu.kea.kinoxp.services.MovieService;
 import edu.kea.kinoxp.services.ScreeningService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,13 +21,13 @@ public class MovieController {
     //SIDER
     @GetMapping("/")
     public String renderFrontpage(){
-        return "frontpage";
+        return "index/frontpage";
     }
 
     @GetMapping("/movies")
     public String getMovies(Model model) {
         model.addAttribute("movies", movieService.fetchAllMovies());
-        return "movies.html";
+        return "movie/movies.html";
     }
 
 
@@ -37,12 +36,12 @@ public class MovieController {
         model.addAttribute("film",movieService.getMovie(id));
         model.addAttribute("screenings",screeningService.fetchAllScreeningsById(id));
         model.addAttribute("movieDates", screeningService.fetchAllDatesForMovie(id));
-        return "movie.html";
+        return "movie/movie.html";
     }
 
     @GetMapping("/create-movie-page")
     public String renderMoviePage(){
-        return "create-movie";
+        return "movie/create-movie";
     }
 
 
@@ -50,7 +49,7 @@ public class MovieController {
     @PostMapping("/create-movie")
     public String createMovie(@ModelAttribute Movie m){
         movieService.createMovie(m);
-        return "frontpage";
+        return "index/frontpage";
     }
 
     @GetMapping("/searchMovie")
@@ -58,14 +57,14 @@ public class MovieController {
         List<Movie> listProducts = movieService.listAll(keyword);
         model.addAttribute("film", listProducts);
         model.addAttribute("keyword", keyword);
-        return "searchMovie.html";
+        return "movie/searchMovie.html";
     }
 
     @GetMapping("/movies/{id}/edit")
     public String editMoviePage(Model model, @PathVariable int id){
         Movie movie = movieService.getMovie(id);
         model.addAttribute("movie", movie);
-        return "edit-movie.html";
+        return "movie/edit-movie.html";
     }
 
     @PostMapping("/editMovie")

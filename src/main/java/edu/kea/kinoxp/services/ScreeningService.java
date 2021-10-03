@@ -15,18 +15,20 @@ public class ScreeningService {
     @Autowired
     ScreeningRepo screeningRepo;
 
+
     public List<Screening> getAllScreeningsByDate() {
         return screeningRepo.fetchAllScreeningsByDate();
     }
 
+    public List<Screening> getAllScreeningsByDateAndHall(int cinemas_idcinemahall) {
+        return screeningRepo.fetchAllScreeningsByDateAndHall(cinemas_idcinemahall);
+    }
+
     // create screening
-    public Screening createScreening(Screening s){
+    public Screening createScreening(Screening s) {
         return screeningRepo.createScreening(s);
     }
 
-
-
-    // create screening
 
     public List<Screening> fetchAllScreeningsById(int id) {
         return screeningRepo.fetchAllScreeningsById(id);

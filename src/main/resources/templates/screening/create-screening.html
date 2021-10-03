@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head.html(currentPage='screenings', customCSS='create-screening.css')"></head>
+<body>
+<header th:replace="fragments/header.html"></header>
+
+
+<div class="grid">
+
+    <div class="movie">
+        <p>our movie:</p>
+        <h1 th:text="${movie.title}"></h1>
+
+        <form action="/create-screening" method="post">
+            <div class="screening-grid">
+
+                <input type="hidden" name="movies_idmovies" th:value="${movie.getIdmovies()}">
+                <input type="date" id="start" name="date">
+                <input type="hidden" name="timeslot" th:value="${1}">
+                <input type="hidden" name="cinemas_idcinemahall" th:value="${2}">
+
+                <button type="submit" class="buttonClass" value="Create new movie">Opret film</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="date">
+        <p>11-11-1996 - TODAY</p>
+    </div>
+    <div class="cin1">
+        <p>cinema 1:</p>
+        <ul th:each="screenings1 : ${screenings1}">
+            <li>
+                <p th:text="'Movie: ' + ${screenings1.movies_idmovies}"></p>
+                <button th:text="${screenings1.movies_idmovies}"></button>
+            </li>
+            <li>
+                <div th:switch="${screenings1.timeslot}">
+                    <h3 th:case="'1'">Tidspunkt: 12:00 </h3>
+                    <h3 th:case="'2'">Tidspunkt: 14:45 </h3>
+                    <h3 th:case="'3'">Tidspunkt: 17:30 </h3>
+                    <h3 th:case="'4'">Tidspunkt: 20:15 </h3>
+                </div>
+            </li>
+
+        </ul>
+
+    </div>
+    <div class="cin2">
+        <p>cinema 2:</p>
+
+            <button th:text="${screenings2.get(0).movies_idmovies} ?: 'UNKNOWN'"></button>
+            <button th:text="${screenings2.get(1).movies_idmovies} ?: 'UNKNOWN'"></button>
+            <button th:text="${screenings2.get(2).movies_idmovies} ?: 'UNKNOWN'"></button>
+            <button th:text="${screenings2.get(3).movies_idmovies} ?: 'UNKNOWN'"></button>
+
+    </div>
+
+</div>
+
+
+</body>
+<footer th:replace="fragments/footer.html"></footer>
+</html>
