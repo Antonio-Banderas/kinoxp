@@ -40,4 +40,31 @@ h2,h1,h3,span,p{
     text-decoration: none;
     cursor: pointer;
 }
+table, th, td {
 
+    border-bottom: 3px solid white;
+}
+
+table {
+    border-collapse: collapse;
+    margin-left: 80px;
+    margin-right: 80px;
+    float:right;
+    padding-left:10px;
+}
+
+.timeslot {
+    float:left;
+    background-color: #990000;
+    margin: 4px;
+    padding: 10px;
+    list-style-type: none;
+    text-decoration: none;
+    width: 75px;
+}
+.first-column-width {
+    width:200px;
+}
+.second-column-width {
+    width:500px;
+}

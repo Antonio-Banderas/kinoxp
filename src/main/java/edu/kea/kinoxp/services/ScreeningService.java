@@ -5,6 +5,7 @@ import edu.kea.kinoxp.repositories.ScreeningRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -31,6 +32,8 @@ public class ScreeningService {
         return screeningRepo.fetchAllScreeningsById(id);
     }
 
-
+    public List<LocalDate> fetchAllDatesForMovie(int movieid) {
+        return screeningRepo.fetchAllDatesForMovie(movieid);
+    }
 
 }

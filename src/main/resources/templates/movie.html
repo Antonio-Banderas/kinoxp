@@ -61,11 +61,44 @@
     </div>
 </div>
 
+<table>
+    <thead>
+    <tr>
+        <th class="first-column-width"><h3>Dato</h3></th>
+        <th><h3>Tid</h3></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="date : ${movieDates}">
+        <td class="first-column-width">
+            <h3 th:text="'Dato: ' + ${#temporals.format(date, 'dd-MM')}"></h3>
+        </td>
+        <td class="second-column-width">
+            <div th:each="screening: ${screenings}">
+                <div th:if="${date} == ${screening.date}">
+                    <a th:href="@{'/screenings/'+${screening.idscreening}}" >
+                        <div  class="timeslot">
+                            <span th:text="'Sal: ' + ${screening.cinemas_idcinemahall}"/>
+                            <div th:switch="${screening.timeslot}">
+                                <span th:case="'1'"> Kl. 12:00</span>
+                                <span th:case="'2'"> Kl. 14:45</span>
+                                <span th:case="'3'"> KL. 17:30</span>
+                                <span th:case="'4'"> KL. 20:15</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
 <div>
     <ul th:each="screening : ${screenings}">
         <li>
             <div>
-                <h3 th:text="'Dato: ' + ${#dates.format(screening.date, 'dd MMM')}"></h3>
+                <h3 th:text="'Dato: ' + ${#temporals.format(screening.date, 'dd MM')}"></h3>
             </div>
             <div th:switch="${screening.timeslot}">
                 <h3 th:case="'1'">Tidspunkt: 12:00 </h3>

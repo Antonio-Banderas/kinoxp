@@ -1,6 +1,5 @@
 package edu.kea.kinoxp.controllers;
 
-import edu.kea.kinoxp.models.Movie;
 import edu.kea.kinoxp.models.Screening;
 import edu.kea.kinoxp.services.MovieService;
 import edu.kea.kinoxp.services.ScreeningService;
@@ -39,4 +38,8 @@ public class ScreeningController {
         return "frontpage";
     }
 
+    @GetMapping("/screenings/{id}")
+    public String seatSelection(@PathVariable int id, Model model) {
+        return "cinema-seats";
+    }
 }

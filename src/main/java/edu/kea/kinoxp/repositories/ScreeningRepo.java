@@ -6,10 +6,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.SingleColumnRowMapper;
 import org.springframework.stereotype.Repository;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -31,8 +31,13 @@ public class ScreeningRepo {
     }
 
     public List<Screening> fetchAllScreeningsById(int id){
-        String sql = "SELECT * FROM screenings WHERE movies_idmovies = ?";
+        String sql = "SELECT * FROM screenings WHERE movies_idmovies = ? ORDER BY date, timeslot, cinemas_idcinemahall ASC";
         RowMapper<Screening> rowMapper = new BeanPropertyRowMapper<>(Screening.class);
         return template.query(sql, rowMapper, id);
+    }
+    public List<LocalDate> fetchAllDatesForMovie(int movieid) {
+        String sql = "SELECT DISTINCT date FROM screenings WHERE (movies_idmovies = ?) and (date > curdate()) or (date = curdate()) ORDER BY date ASC;";
+        SingleColumnRowMapper<LocalDate> rowMapper = new SingleColumnRowMapper<>(LocalDate.class);
+        return template.query(sql, rowMapper, movieid);
     }
 }
