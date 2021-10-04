@@ -28,6 +28,7 @@ public class ScreeningController {
     public String renderCreateScreening(@PathVariable int id, Model model){
 
         model.addAttribute("movie",movieService.getMovie(id));
+
         model.addAttribute("screenings1",screeningService.getAllScreeningsByDateAndHall(1));
         model.addAttribute("screenings2",screeningService.getAllScreeningsByDateAndHall(2));
 
