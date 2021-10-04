@@ -30,12 +30,16 @@ public class ScreeningService {
     }
 
 
-    public List<Screening> fetchAllScreeningsById(int id) {
-        return screeningRepo.fetchAllScreeningsById(id);
+    public List<Screening> fetchAllScreeningsByMovieId(int movieid) {
+        return screeningRepo.fetchAllScreeningsByMovieId(movieid);
     }
 
     public List<LocalDate> fetchAllDatesForMovie(int movieid) {
         return screeningRepo.fetchAllDatesForMovie(movieid);
+    }
+
+    public Screening fetchScreeningById(int screeningid){
+        return screeningRepo.fetchScreeningById(screeningid);
     }
 
 }

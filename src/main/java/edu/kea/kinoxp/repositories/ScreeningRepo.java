@@ -36,10 +36,16 @@ public class ScreeningRepo {
         return  template.query(sql, rowMapper, cinemas_idcinemahall);
     }
 
-    public List<Screening> fetchAllScreeningsById(int id){
+    public List<Screening> fetchAllScreeningsByMovieId(int movieid){
         String sql = "SELECT * FROM screenings WHERE movies_idmovies = ? ORDER BY date, timeslot, cinemas_idcinemahall ASC";
         RowMapper<Screening> rowMapper = new BeanPropertyRowMapper<>(Screening.class);
-        return template.query(sql, rowMapper, id);
+        return template.query(sql, rowMapper, movieid);
+    }
+
+    public Screening fetchScreeningById(int screeningid){
+        String sql = "SELECT * FROM screenings WHERE idscreening = ?";
+        RowMapper<Screening> rowMapper = new BeanPropertyRowMapper<>(Screening.class);
+        return template.queryForObject(sql, rowMapper, screeningid);
     }
 
     public List<LocalDate> fetchAllDatesForMovie(int movieid) {

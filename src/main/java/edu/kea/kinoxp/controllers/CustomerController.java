@@ -13,7 +13,7 @@ public class CustomerController {
   @Autowired
   CustomerService customerService;
 
-  @GetMapping("/customer")
+  @GetMapping("/add-customer")
   public String getCustomerPage(){
     return "customer/create-customer.html";
   }
