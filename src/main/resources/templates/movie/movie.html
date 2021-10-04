@@ -96,26 +96,6 @@ customCSS='specificmovie.css')"></head>
     </tbody>
 </table>
 
-<div>
-    <ul th:each="screening : ${screenings}">
-        <li>
-            <div>
-                <h3 th:text="'Dato: ' + ${#temporals.format(screening.date, 'dd MM')}"></h3>
-            </div>
-            <div th:switch="${screening.timeslot}">
-                <h3 th:case="'1'">Tidspunkt: 12:00 </h3>
-                <h3 th:case="'2'">Tidspunkt: 14:45 </h3>
-                <h3 th:case="'3'">Tidspunkt: 17:30 </h3>
-                <h3 th:case="'4'">Tidspunkt: 20:15 </h3>
-            </div>
-            <div>
-                <h3 th:text="'Sal: ' + ${screening.cinemas_idcinemahall}"></h3>
-            </div>
-        </li>
-        </a>
-    </ul>
-</div>
-
 </body>
 
 <footer th:replace="fragments/footer.html"></footer>
