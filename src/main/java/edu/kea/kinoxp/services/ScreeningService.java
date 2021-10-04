@@ -15,6 +15,9 @@ public class ScreeningService {
     @Autowired
     ScreeningRepo screeningRepo;
 
+    public Screening getScreeningByID(long id){
+        return screeningRepo.getScreeningByID(id);
+    }
 
     public List<Screening> getAllScreeningsByDate() {
         return screeningRepo.fetchAllScreeningsByDate();
@@ -36,6 +39,10 @@ public class ScreeningService {
 
     public List<LocalDate> fetchAllDatesForMovie(int movieid) {
         return screeningRepo.fetchAllDatesForMovie(movieid);
+    }
+
+    public List<String> getOccupiedSeatsByScreeningID(Long id){
+        return screeningRepo.getOccupiedSeatsByScreeningID(id);
     }
 
 }

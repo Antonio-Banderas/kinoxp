@@ -24,6 +24,17 @@ public class ScreeningRepo {
         return null;
     }
 
+    public Screening getScreeningByID(Long id){
+        String sql ="SELECT * FROM screenings WHERE idscreening = ?";
+        RowMapper<Screening> rowMapper = new BeanPropertyRowMapper<>(Screening.class);
+        return template.queryForObject(sql, rowMapper, id);
+    }
+
+    public List<String> getOccupiedSeatsByScreeningID(Long id){
+        String sql = "SELECT rownumber, seatnumber FROM seats INNER JOIN seat_reserved ON seats.idseats = seat_reserved.id_seats;";
+                return null;
+    }
+
     public List<Screening> fetchAllScreeningsByDate(){
         String sql = "SELECT * FROM screenings WHERE date = CURRENT_DATE";
         RowMapper<Screening> rowMapper = new BeanPropertyRowMapper<>(Screening.class);

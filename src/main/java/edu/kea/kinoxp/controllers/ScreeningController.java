@@ -26,6 +26,7 @@ public class ScreeningController {
     public String renderCreateScreening(@PathVariable int id, Model model){
 
         model.addAttribute("movie",movieService.getMovie(id));
+
         model.addAttribute("screenings1",screeningService.getAllScreeningsByDateAndHall(1));
         model.addAttribute("screenings2",screeningService.getAllScreeningsByDateAndHall(2));
 
@@ -42,6 +43,21 @@ public class ScreeningController {
 
     @GetMapping("/screenings/{id}")
     public String seatSelection(@PathVariable int id, Model model) {
+        model.addAttribute("screening", screeningService.getScreeningByID(id));
+        model.addAttribute("seats", screeningService.getOccupiedSeatsByScreeningID(id));
         return "screening/cinema-seats";
     }
+
+    /*
+    @PostMapping("/selectedSeats")
+    public String selectedSeats(@RequestBody String allBody) {
+        System.out.println(allBody);
+        List<Integer> selectedSeatIDs = Arrays.stream(allBody.split("=on&|=on"))
+                .map(Integer::parseInt)
+                .collect(Collectors.toList());
+        System.out.println(selectedSeatIDs);
+
+        return "customer/create-customer";
+    }
+    */
 }
