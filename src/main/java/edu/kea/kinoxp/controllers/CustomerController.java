@@ -15,7 +15,7 @@ public class CustomerController {
 
   @GetMapping("/customer")
   public String getCustomerPage(){
-    return "create-customer.html";
+    return "customer/create-customer.html";
   }
 
   @PostMapping("/create-customer")
@@ -29,7 +29,7 @@ public class CustomerController {
   public String editCustomerPage(Model model, @PathVariable int id){
     Customer customer = customerService.fetchCustomerByID(id);
     model.addAttribute("customer", customer);
-    return "edit-customer.html";
+    return "customer/edit-customer.html";
   }
 
   @PostMapping("/edit-customer")

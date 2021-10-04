@@ -1,10 +1,8 @@
 package edu.kea.kinoxp.controllers;
-import edu.kea.kinoxp.models.Customer;
+
 import edu.kea.kinoxp.models.Movie;
-import edu.kea.kinoxp.repositories.MovieRepo;
-import edu.kea.kinoxp.repositories.ScreeningRepo;
-import edu.kea.kinoxp.services.CustomerService;
 import edu.kea.kinoxp.services.MovieService;
+import edu.kea.kinoxp.services.ScreeningService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Controller;
@@ -18,63 +16,55 @@ public class MovieController {
     @Autowired
     MovieService movieService;
     @Autowired
-    CustomerService customerService;
-    @Autowired
-    ScreeningRepo screeningRepo;
+    ScreeningService screeningService;
 
     //SIDER
     @GetMapping("/")
     public String renderFrontpage(){
-        return "frontpage";
+        return "index/frontpage";
     }
 
     @GetMapping("/movies")
     public String getMovies(Model model) {
         model.addAttribute("movies", movieService.fetchAllMovies());
-        return "movies.html";
+        return "movie/movies.html";
     }
-
 
 
     @GetMapping("/movies/{id}")
     public String getSpecificMovie(@PathVariable int id, Model model){
         model.addAttribute("film",movieService.getMovie(id));
-        model.addAttribute("screening",screeningRepo.fetchAllScreeningsById(id) );
-        return "movie.html";
+        model.addAttribute("screenings",screeningService.fetchAllScreeningsById(id));
+        model.addAttribute("movieDates", screeningService.fetchAllDatesForMovie(id));
+        return "movie/movie.html";
     }
 
     @GetMapping("/create-movie-page")
     public String renderMoviePage(){
-        return "create-movie";
+        return "movie/create-movie";
     }
 
-    //SC
 
-
-
-
-
-    //API METODER
+    //API METODER <!> ikke api metoder
     @PostMapping("/create-movie")
     public String createMovie(@ModelAttribute Movie m){
         movieService.createMovie(m);
-        return "frontpage";
+        return "index/frontpage";
     }
-
 
     @GetMapping("/searchMovie")
     public String searchHTML(Model model,@Param("keyword") String keyword){
         List<Movie> listProducts = movieService.listAll(keyword);
         model.addAttribute("film", listProducts);
         model.addAttribute("keyword", keyword);
-        return "searchMovie.html";
+        return "movie/searchMovie.html";
     }
 
     @GetMapping("/movies/{id}/edit")
     public String editMoviePage(Model model, @PathVariable int id){
         Movie movie = movieService.getMovie(id);
         model.addAttribute("movie", movie);
-        return "edit-movie.html";
+        return "movie/edit-movie.html";
     }
 
     @PostMapping("/editMovie")

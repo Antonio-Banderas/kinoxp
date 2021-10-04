@@ -7,7 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
 
@@ -23,19 +25,23 @@ public class ScreeningController {
     @GetMapping("/movies/{id}/screening")
     public String renderCreateScreening(@PathVariable int id, Model model){
 
-        String screendatetime = "mandag"; // this should be a service that finds current date
-        System.out.println("trash");
+        model.addAttribute("movie",movieService.getMovie(id));
+        model.addAttribute("screenings1",screeningService.getAllScreeningsByDateAndHall(1));
+        model.addAttribute("screenings2",screeningService.getAllScreeningsByDateAndHall(2));
 
-        List<Screening> list = screeningService.getAllScreeningsByDate(screendatetime);
-
-        model.addAttribute("film",movieService.getMovie(id));
-        model.addAttribute("other", list);
-
-        // get movies from this date
-
-        // model.add(dato,
-
-        return "create-screening";
+        return "screening/create-screening";
     }
 
+    @PostMapping("/create-screening")
+    public String createScreening(@ModelAttribute Screening s){
+        System.out.println(s.getDate().toString());
+        screeningService.createScreening(s);
+        return "index/frontpage";
+
+    }
+
+    @GetMapping("/screenings/{id}")
+    public String seatSelection(@PathVariable int id, Model model) {
+        return "screening/cinema-seats";
+    }
 }
