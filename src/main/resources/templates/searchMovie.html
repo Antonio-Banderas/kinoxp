@@ -1,28 +1,45 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head th:replace="fragments/head.html(currentPage='Search movie-fragment', customCSS='/search.css')"></head>
+<header th:replace="fragments/header.html"></header>
     <meta charset="UTF-8">
     <title>Search Movie</title>
 </head>
 <body>
 <form th:action="@{/searchMovie}">
-    Filter: <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required />
-    &nbsp;
-    <input type="submit" value="Search" />
-    &nbsp;
-    <input type="button" value="Clear" id="btnClear" onclick="clearSearch()" />
+    <label>
+    <h1 style="text-align: center">Søg på film</h1> <input type="text" name="keyword" id="keyword" size="50" th:value="${keyword}" required placeholder="Indtast søgeord.." />
+    <input type="submit" value="Søg" />
+    &nbsp;</label>
 </form>
 
-<tr th:each="fil : ${film}">
-    <td th:text="${fil.idmovies}"></td>
-    <td th:text="${fil.title}"></td>
-    <td th:text="${fil.price}"></td>
-    <td th:text="${fil.length}"></td>
+<table id="search">
+<thead>
+<tr>
+    <th>ID</th>
+    <th>Title</th>
+    <th>Price</th>
+    <th>Length</th>
 </tr>
+</thead>
+<tbody>
+    <tr th:each="fil : ${film}">
+        <td th:text="${fil.idmovies}"></td>
+        <td th:text="${fil.title}"></td>
+        <td th:text="${fil.price}"></td>
+        <td th:text="${fil.length}"></td>
+    </tr>
+</tbody>
+</table>
+<br>
+<br>
+<br>
+
 <script type="text/javascript">
     function clearSearch() {
         window.location = "[[@{/}]]";
     }
 </script>
 </body>
+<footer th:replace="fragments/footer.html"></footer>
 </html>
