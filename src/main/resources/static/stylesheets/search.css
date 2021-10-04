@@ -3,11 +3,18 @@ input[type="text"] {
     text-align: center;
     margin-left: 35%;
 
+    float: left;
+    display: block;
+    color: black;
+    padding: 7px 8px;
+    text-decoration: none;
+    font-size: 17px;
+
 }
 
 input[type="submit"] {
     width: 5%;
-
+    padding: 9px 8px;
 }
 
 #search {

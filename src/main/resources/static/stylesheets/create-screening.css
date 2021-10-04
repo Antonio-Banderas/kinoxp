@@ -12,7 +12,9 @@
     "cin1 cin2";
 }
 
-.movie { grid-area: movie; }
+.movie {
+    grid-area: movie;
+}
 
 .date { grid-area: date; }
 
