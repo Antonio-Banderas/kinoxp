@@ -41,8 +41,15 @@ function makeRows(rowNum) {
 function makeColumns(cellNum) {
     for (let i = 0; i < rows.length; i++) {
         for (let j = 0; j < cellNum; j++) {
+            let x = 4;
+            let y = 3;
             let newCell = document.createElement("div");
-            rows[i].appendChild(newCell).className = "seat";
+            if (i === x && j === y){
+                rows[i].appendChild(newCell).className = "seat occupied";
+            }
+            else {
+                rows[i].appendChild(newCell).className = "seat";
+            }
         }
 
     }
