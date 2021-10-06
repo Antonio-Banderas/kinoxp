@@ -1,7 +1,6 @@
 const container = document.querySelector('.container');
 let rows = document.getElementsByClassName("row");
 let cinema = document.querySelector('.cinema').textContent;
-console.log(cinema);
 
 //Seat click event
 container.addEventListener('click', e => {
@@ -10,7 +9,7 @@ container.addEventListener('click', e => {
         e.target.classList.toggle('selected');
     }
 });
-
+let idseats = list.map(a => a.idseats);
 
 createGrid(cinema);
 function createGrid(cinema) {
@@ -39,18 +38,23 @@ function makeRows(rowNum) {
 
 //Creates columns
 function makeColumns(cellNum) {
+    let idCounter = 1;
+    if(cinema === "2"){
+        idCounter = 241;
+    }
+
     for (let i = 0; i < rows.length; i++) {
         for (let j = 0; j < cellNum; j++) {
-            let x = 4;
-            let y = 3;
+
             let newCell = document.createElement("div");
-            if (i === x && j === y){
+            newCell.setAttribute('id', idCounter.toString());
+            if (idseats.includes(idCounter)){
                 rows[i].appendChild(newCell).className = "seat occupied";
             }
             else {
                 rows[i].appendChild(newCell).className = "seat";
             }
+            idCounter++;
         }
-
     }
 }

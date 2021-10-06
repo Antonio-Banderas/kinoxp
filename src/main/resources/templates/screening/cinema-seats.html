@@ -30,5 +30,6 @@
 
 <footer th:replace="fragments/footer.html"></footer>
 </body>
+<script th:inline="javascript">let list = [[${seats}]]</script>
 <script type="text/javascript" th:src="@{/seats.js}"></script>
 </html>
