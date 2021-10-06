@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head.html(currentPage='Edit Movie', customCSS='/products.css')"></head>
+<header th:replace="fragments/header.html"></header>
+<body>
+<br>
+<a class="btn" href="/create-product">
+    <button> Opret produkt </button>
+</a>
+<br>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Produkt ID</th>
+                <th>Produkt navn</th>
+                <th>Produkt pris i kr.</th>
+                <th>Andre muligheder</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="product: ${products}">
+                <td th:text="${product.idproducts}"></td>
+                <td th:text="${product.name}"></td>
+                <td th:text="${product.price}"></td>
+                <td>
+                    <a th:href="@{'/deleteproduct/'+${product.idproducts}}">
+                        <button>Fjern</button>
+                    </a>
+                    <a th:href="@{'/products/'+${product.idproducts}+'/edit'}">
+                        <button>Rediger</button>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+<br>
+<br>
+
+</body>
+<footer th:replace="fragments/footer.html"></footer>
+</html>
