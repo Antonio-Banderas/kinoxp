@@ -3,7 +3,8 @@
 <head th:replace="fragments/head.html(currentPage='Edit Movie', customCSS='/products.css')"></head>
 <header th:replace="fragments/header.html"></header>
 <body>
-
+<br>
+<br>
 <table class="styled-table">
     <thead>
     <tr>
@@ -18,13 +19,14 @@
         <form action="/edit-product" method="post">
             <td th:text="${product.idproducts}"></td>
             <td>
+                <input type="hidden" name="idproducts" th:value="${product.idproducts}">
                 <label>
-                    <input type="text" name="name" th:placeholder="product.name">
+                    <input type="text" name="name" th:placeholder="${product.name}">
                 </label>
             </td>
             <td>
                 <label>
-                    <input type="text" name="price" th:placeholder="product.price">
+                    <input type="text" name="price" th:placeholder="${product.price}">
                 </label>
             </td>
             <td>
@@ -34,8 +36,11 @@
             </td>
         </form>
     </tr>
+
     </tbody>
 </table>
-
+<br>
+<br>
 </body>
+<footer th:replace="fragments/footer.html"></footer>
 </html>

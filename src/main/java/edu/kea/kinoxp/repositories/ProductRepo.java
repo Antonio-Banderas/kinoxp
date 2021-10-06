@@ -31,7 +31,7 @@ public class ProductRepo {
 
     public void updateProduct(Product p){
         String sql = "UPDATE products SET name = ?, price = ? WHERE idproducts = ?";
-        template.update(sql, p.getName(), p.getPrice());
+        template.update(sql, p.getName(), p.getPrice(), p.getIdproducts());
     }
     public boolean deleteProduct(int productid){
         String sql = "DELETE FROM products where idproducts = ?";
