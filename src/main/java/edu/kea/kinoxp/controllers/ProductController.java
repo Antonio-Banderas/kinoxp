@@ -18,6 +18,10 @@ public class ProductController {
         model.addAttribute("products", productService.fetchAllProducts());
         return "products/products.html";
     }
+    @GetMapping("/create-product")
+    public String createProducts() {
+        return "products/create-product.html";
+    }
     @PostMapping("/create-product")
     public String createProduct(@RequestParam("name") String name, @RequestParam("price") String price) {
         Product p = new Product(name, Double.parseDouble(price));
@@ -35,10 +39,14 @@ public class ProductController {
         productService.updateProducts(p);
         return "redirect:/products/";
     }
-    @PostMapping("/deleteproduct/{idproducts}")
-    public String deleteProduct(@PathVariable int idproducts){
-        productService.deleteProduct(idproducts);
-        return "redirect:/products/";
+    @GetMapping("/deleteproduct/{idproducts}")
+    public String deleteProduct(@PathVariable("idproducts") int idproducts){
+        boolean deleted = productService.deleteProduct(idproducts);
+        if (deleted) {
+            return "redirect:/products/";
+        }else {
+            return "redirect:/products/";
+        }
     }
 
 
