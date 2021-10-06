@@ -33,7 +33,7 @@ public class ProductController {
     @PostMapping("/edit-product")
     public String editProduct(@ModelAttribute Product p) {
         productService.updateProducts(p);
-        return "redirect:/products/" + p.getIdproducts();
+        return "redirect:/products/";
     }
     @PostMapping("/deleteproduct/{idproducts}")
     public String deleteProduct(@PathVariable int idproducts){
