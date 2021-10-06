@@ -12,7 +12,7 @@ public class CustomerService {
     @Autowired
     CustomerRepo customerRepo;
 
-    public Customer createCustomer(Customer c){
+    public int createCustomer(Customer c){
         return customerRepo.createCustomer(c);
     }
 

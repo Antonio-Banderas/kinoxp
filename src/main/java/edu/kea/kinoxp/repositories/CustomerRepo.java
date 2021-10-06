@@ -5,23 +5,47 @@ import edu.kea.kinoxp.models.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
 import org.springframework.jdbc.core.RowMapper;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 
 @Repository
 public class CustomerRepo {
     @Autowired
     JdbcTemplate template;
 
-    public Customer createCustomer(Customer c) {
+    public int createCustomer(Customer c) {
         String sql = "INSERT INTO customers(firstname,lastname,phonenumber, email) VALUES (?, ?, ?, ?)";
-        template.update(sql, c.getFirstName(),c.getLastName(), c.getPhoneNumber(), c.getEmail());
-        return c;
+        //template.update(sql, c.getFirstname(),c.getLastname(), c.getPhonenumber(), c.getEmail());
+
+        KeyHolder keyHolder = new GeneratedKeyHolder();
+        template.update(
+                new PreparedStatementCreator() {
+                    public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
+                        PreparedStatement ps =
+                                connection.prepareStatement(sql, new String[] {"id"});
+                        ps.setString(1, c.getFirstname());
+                        ps.setString(2, c.getLastname());
+                        ps.setInt(3,c.getPhonenumber());
+                        ps.setString(4,c.getEmail());
+                        return ps;
+                    }
+                },
+                keyHolder);
+// keyHolder.getKey() now contains the generated key
+
+        return keyHolder.getKey().intValue();
     }
 
     public void updateCostumer(Customer c){
         String sql = "UPDATE customers SET firstname = ?, lastname = ?, phonenumber = ?, email = ? WHERE idcustomer = ?";
-        template.update(sql, c.getFirstName(), c.getLastName(), c.getPhoneNumber(), c.getEmail(), c.getIdCustomer());
+        template.update(sql, c.getFirstname(), c.getLastname(), c.getPhonenumber(), c.getEmail(), c.getIdcustomer());
     }
 
     public Customer fetchCustomerByID(int customerID) {
