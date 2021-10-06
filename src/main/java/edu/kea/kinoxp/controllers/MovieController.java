@@ -61,7 +61,8 @@ public class MovieController {
     }
 
     @GetMapping("/movies/{id}/edit")
-    public String editMoviePage(Model model, @PathVariable int id){
+    public String editMoviePage(@PathVariable int id, Model model){
+        System.out.println(id);
         Movie movie = movieService.getMovie(id);
         model.addAttribute("movie", movie);
         return "movie/edit-movie.html";

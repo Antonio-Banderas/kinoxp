@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head.html(currentPage='Edit Movie', customCSS='/products.css')"></head>
+<header th:replace="fragments/header.html"></header>
+<body>
+
+<table class="styled-table">
+    <thead>
+    <tr>
+        <th>Produkt ID</th>
+        <th>Produkt navn</th>
+        <th>Produkt pris i kr.</th>
+        <th>Andre muligheder</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <form action="/edit-product" method="post">
+            <td th:text="${product.idproducts}"></td>
+            <td>
+                <label>
+                    <input type="text" name="name" th:placeholder="product.name">
+                </label>
+            </td>
+            <td>
+                <label>
+                    <input type="text" name="price" th:placeholder="product.price">
+                </label>
+            </td>
+            <td>
+                <a th:href="@{'/edit-product/'+${product.idproducts}}">
+                    <button type="submit" class="buttonClass">Gem ændringer</button>
+                </a>
+            </td>
+        </form>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

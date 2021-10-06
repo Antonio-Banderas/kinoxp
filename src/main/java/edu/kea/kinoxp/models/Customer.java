@@ -1,59 +1,70 @@
 package edu.kea.kinoxp.models;
 
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
 
 public class Customer {
     @Id
-    private int idCustomer;
-    private String firstName;
-    private String lastName;
-    private int phoneNumber;
+    private int idcustomer;
+    private String firstname;
+    private String lastname;
+    private int phonenumber;
     private String email;
 
-
-
-    public Customer(String firstName, String lastName, int phoneNumber, String email) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.phoneNumber = phoneNumber;
+    public Customer(int idcustomer, String firstname, String lastname, int phonenumber, String email) {
+        this.idcustomer = idcustomer;
+        this.firstname = firstname;
+        this.lastname = lastname;
+        this.phonenumber = phonenumber;
         this.email = email;
     }
 
-    public Customer(){
+    public Customer() {
+
     }
 
-
-    public int getIdCustomer() {
-        return idCustomer;
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "idcustomer=" + idcustomer +
+                ", firstname='" + firstname + '\'' +
+                ", lastname='" + lastname + '\'' +
+                ", phonenumber=" + phonenumber +
+                ", email='" + email + '\'' +
+                '}';
     }
 
-    public void setIdCustomer(int idCustomer) {
-        this.idCustomer = idCustomer;
+    public int getIdcustomer() {
+        return idcustomer;
     }
 
-    public String getFirstName() {
-        return firstName;
+    public void setIdcustomer(int idcustomer) {
+        this.idcustomer = idcustomer;
     }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public String getFirstname() {
+        return firstname;
     }
 
-    public String getLastName() {
-        return lastName;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
+    public String getLastname() {
+        return lastname;
     }
 
-    public int getPhoneNumber() {
-        return phoneNumber;
+    public void setLastname(String lastname) {
+        this.lastname = lastname;
     }
 
-    public void setPhoneNumber(int phoneNumber) {
-        this.phoneNumber = phoneNumber;
+    public int getPhonenumber() {
+        return phonenumber;
+    }
+
+    public void setPhonenumber(int phonenumber) {
+        this.phonenumber = phonenumber;
     }
 
     public String getEmail() {
@@ -62,17 +73,5 @@ public class Customer {
 
     public void setEmail(String email) {
         this.email = email;
-    }
-
-
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "id=" + idCustomer +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                ", phoneNumber=" + phoneNumber +
-                ", email='" + email + '\'' +
-                '}';
     }
 }

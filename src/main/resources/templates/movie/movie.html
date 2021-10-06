@@ -1,16 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head th:replace="fragments/head.html(currentPage='create-movie-fragment',
-customCSS='specificmovie.css')"></head>
+<head th:replace="fragments/head.html(currentPage='create-movie-fragment', customCSS='specificmovie.css')"></head>
 
 <header th:replace="fragments/header.html">
 </header>
 <body>
 
 <!-- add this movie to a screening -->
-<a style="text-align:center" th:href="@{'/movies/' + ${film.idmovies} + '/screening'}">
-    <button class="button">Opret screening af denne film</button>
-</a>
+<div class="centerMe">
+    <a style="text-align:center" th:href="@{'/movies/' + ${film.idmovies} + '/screening'}">
+        <button class="button">Opret screening af denne film</button>
+    </a>
+</div>
 <!----------------------------------->
 
 <div class="container">
@@ -78,8 +79,8 @@ customCSS='specificmovie.css')"></head>
         <td class="second-column-width">
             <div th:each="screening: ${screenings}">
                 <div th:if="${date} == ${screening.date}">
-                    <a th:href="@{'/screenings/'+${screening.idscreening}}" >
-                        <div  class="timeslot">
+                    <a th:href="@{'/screenings/'+${screening.idscreening}}">
+                        <div class="timeslot">
                             <span th:text="'Sal: ' + ${screening.cinemas_idcinemahall}"/>
                             <div th:switch="${screening.timeslot}">
                                 <span th:case="'1'"> Kl. 12:00</span>

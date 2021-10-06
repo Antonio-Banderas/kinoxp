@@ -3,6 +3,7 @@ package edu.kea.kinoxp.repositories;
 import edu.kea.kinoxp.models.Movie;
 import edu.kea.kinoxp.models.Screening;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -52,4 +53,5 @@ public class MovieRepo {
         String sql = "DELETE FROM movies where idmovies = ?";
         template.update(sql, id);
     }
+
 }

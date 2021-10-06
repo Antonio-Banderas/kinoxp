@@ -1,7 +1,9 @@
 package edu.kea.kinoxp.services;
 
+import edu.kea.kinoxp.models.Reservation;
 import edu.kea.kinoxp.models.Screening;
 import edu.kea.kinoxp.models.Seat;
+import edu.kea.kinoxp.models.seat_reserved;
 import edu.kea.kinoxp.repositories.ScreeningRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,6 +26,7 @@ public class ScreeningService {
         return screeningRepo.fetchAllScreeningsByDate();
     }
 
+
     public List<Screening> getAllScreeningsByDateAndHall(int cinemas_idcinemahall) {
         return screeningRepo.fetchAllScreeningsByDateAndHall(cinemas_idcinemahall);
     }
@@ -41,9 +44,9 @@ public class ScreeningService {
     public List<LocalDate> fetchAllDatesForMovie(int movieid) {
         return screeningRepo.fetchAllDatesForMovie(movieid);
     }
-
+/*
     public List<Seat> getOccupiedSeatsByScreeningID(Long id){
         return screeningRepo.getOccupiedSeatsByScreeningID(id);
     }
-
+*/
 }

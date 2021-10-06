@@ -5,6 +5,12 @@ body{
     margin: 0px;
     padding: 0px;
 }
+
+.centerMe{
+    display: grid;
+    place-items: center;
+}
+
 .movie-picture, .movie-information{
     flex: 1;
 }
