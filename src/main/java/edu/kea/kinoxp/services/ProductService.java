@@ -23,8 +23,8 @@ public class ProductService {
     public void updateProducts(Product p) {
         productRepo.updateProduct(p);
     }
-    public void deleteProduct(int id) {
-        productRepo.deleteProduct(id);
+    public boolean deleteProduct(int id) {
+        return productRepo.deleteProduct(id);
     }
     public Product getProduct(int idproducts){
         return productRepo.getProductByID(idproducts);
