@@ -8,7 +8,7 @@
 <div class="grid">
 
     <div class="movie">
-        <p>Du har valgt:</p>
+        <p>Du har valgt</p>
         <h1 th:text="${movie.title}"></h1>
 
         <form action="/create-screening" method="post">
@@ -35,18 +35,18 @@
                     </select>
                 </label>
 
-                <button type="submit" class="buttonClass" value="Create new movie">Opret screening af din film</button>
+                <button type="submit" class="buttonClass" value="Create new movie">Opret screening</button>
             </div>
         </form>
     </div>
     <div class="date">
-        <h1>Screenings i dag:</h1>
+        <h1>Screenings i dag</h1>
     </div>
 
 
     <div class="cin1">
-        <h1>Biograf 1:</h1>
-        <ul th:each="screenings1 : ${screenings1}">
+        <h1>Biograf 1</h1>
+        <ul class="bioInfo" th:each="screenings1 : ${screenings1}">
             <li>
                 <p th:text="'Film ID: ' + ${screenings1.movies_idmovies}"></p>
             </li>
@@ -64,9 +64,9 @@
     </div>
 
     <div class="cin2">
-        <h1>Biograf 2:</h1>
+        <h1>Biograf 2</h1>
 
-        <ul th:each="screenings2 : ${screenings2}">
+        <ul class="bioInfo" th:each="screenings2 : ${screenings2}">
             <li>
                 <p th:text="'Film ID: ' + ${screenings2.movies_idmovies}"></p>
             </li>
