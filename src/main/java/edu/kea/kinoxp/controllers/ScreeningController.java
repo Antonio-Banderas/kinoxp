@@ -45,6 +45,7 @@ public class ScreeningController {
     public String seatSelection(@PathVariable long id, Model model) {
         model.addAttribute("screening", screeningService.getScreeningByID(id));
         model.addAttribute("seats", screeningService.getOccupiedSeatsByScreeningID(id));
+        System.out.println(screeningService.getOccupiedSeatsByScreeningID(id));
         return "screening/cinema-seats";
     }
 
