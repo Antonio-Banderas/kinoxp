@@ -4,7 +4,6 @@ package edu.kea.kinoxp.models;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-@Entity
 public class Customer {
     @Id
     private int idcustomer;
