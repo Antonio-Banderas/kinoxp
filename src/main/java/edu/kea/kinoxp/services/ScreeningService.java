@@ -44,9 +44,9 @@ public class ScreeningService {
     public List<LocalDate> fetchAllDatesForMovie(int movieid) {
         return screeningRepo.fetchAllDatesForMovie(movieid);
     }
-/*
+
     public List<Seat> getOccupiedSeatsByScreeningID(Long id){
         return screeningRepo.getOccupiedSeatsByScreeningID(id);
     }
-*/
+
 }
