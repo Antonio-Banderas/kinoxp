@@ -31,3 +31,14 @@
 .btn{
     text-align: center;
 }
+.customerParagraph{
+    font-family: sans-serif;
+    text-align: center;
+    color: #423E37;
+}
+
+.customerParagraph label{
+    font-family: sans-serif;
+    text-align: center;
+    color: #423E37;
+}
