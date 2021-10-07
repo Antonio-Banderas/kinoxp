@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head.html(currentPage='Edit Movie', customCSS='/products.css')"></head>
+<head th:replace="fragments/head.html(currentPage='All products', customCSS='/products.css')"></head>
 <header th:replace="fragments/header.html"></header>
+<link rel="stylesheet" href="stylesheets/products.css">
 <body>
 <br>
-<a class="btn" href="/create-product">
-    <button> Opret produkt </button>
+<a href="/create-product">
+    <button class="create-btn"> Opret produkt </button>
 </a>
+<br>
 <br>
     <table class="styled-table">
         <thead>
@@ -24,10 +26,10 @@
                 <td th:text="${product.price}"></td>
                 <td>
                     <a th:href="@{'/deleteproduct/'+${product.idproducts}}">
-                        <button>Fjern</button>
+                        <button class="delete-btn">Fjern</button>
                     </a>
                     <a th:href="@{'/products/'+${product.idproducts}+'/edit'}">
-                        <button>Rediger</button>
+                        <button class="edit-btn">Rediger</button>
                     </a>
                 </td>
             </tr>

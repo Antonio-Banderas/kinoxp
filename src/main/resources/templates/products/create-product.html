@@ -3,6 +3,7 @@
 <head th:replace="fragments/head.html(currentPage='Edit Movie', customCSS='/create-customer.css')"></head>
 <header th:replace="fragments/header.html"></header>
 <body>
+<h1 style="text-align: center">Opret produkt</h1>
     <form th:action="@{/create-product}" id="customerFORM" method="POST">
         <input type="text" placeholder="Navn" name="name"/>
         <input type="text" placeholder="Pris" name="price"/>
