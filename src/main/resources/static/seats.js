@@ -19,7 +19,7 @@ container.addEventListener('click', e => {
             let seatinput = document.createElement('input');
             seatinput.setAttribute('name', 'seats');
             seatinput.setAttribute('id', 's' + e.target.id);
-            seatinput.textContent = e.target.id;
+            seatinput.setAttribute('value', e.target.id);
             selectedseats.appendChild(seatinput);
         }
         e.target.classList.toggle('selected');
