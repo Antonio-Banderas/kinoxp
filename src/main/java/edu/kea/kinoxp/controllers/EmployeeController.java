@@ -20,6 +20,6 @@ public class EmployeeController {
     @PostMapping("/addEmployee")
     public String changeEmployeeName(@RequestParam("employeename") String navn){
         employeeService.changeEmployeeName(navn);
-        return "redirect:/";
+        return "redirect:/ ";
     }
 }

@@ -7,5 +7,17 @@
         <ul><a href="/searchMovie">Søg på film</a></ul>
     </ul>
     <p th:text="${employee}"></p>
+    <button class="edit-btn">Edit</button>
+    <form id="inputTK" th:action="@{/addEmployee}" method="post">
+        <input type="text" class="employeeInput" name="employeename"/>
+    </form>
 </header>
+
+<script>
+    let input = document.getElementById("inputTK");
+    let button = document.querySelector(".edit-btn");
+    button.addEventListener('click', () => {
+        input.classList.toggle("visible");
+    })
+</script>
 

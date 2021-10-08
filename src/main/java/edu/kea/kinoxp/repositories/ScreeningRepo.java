@@ -43,7 +43,16 @@ public class ScreeningRepo {
         return  template.query(sql, rowMapper);
     }
 
-    public List<Screening> fetchAllScreeningsByDateAndHall(int cinemas_idcinemahall){
+    public void addSeatsToSeatsReserved(int [] seatsArr, int reservationID, int screeningID) {
+        for(int i = 0; i <seatsArr.length; i++) {
+            String sql = "INSERT INTO seats_reserved(id_reservations,id_screenings,id_seats) VALUES(?,?,?)";
+            RowMapper<Screening> rowMapper = new BeanPropertyRowMapper<>(Screening.class);
+            template.query(sql, rowMapper, reservationID, screeningID);
+        }
+    }
+
+
+        public List<Screening> fetchAllScreeningsByDateAndHall(int cinemas_idcinemahall){
         String sql = "SELECT * FROM screenings WHERE date = CURRENT_DATE && cinemas_idcinemahall = ?";
         RowMapper<Screening> rowMapper = new BeanPropertyRowMapper<>(Screening.class);
         return  template.query(sql, rowMapper, cinemas_idcinemahall);

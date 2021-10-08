@@ -12,6 +12,13 @@
     box-shadow: 0px 0px 14px 0px rgba(0,0,0,0.75);
     height: 75px;
 }
+#inputTK{
+    display: none;
+}
+
+.visible{
+    display: block !important;
+}
 
 header,
 .main-nav {
@@ -42,6 +49,9 @@ header,
     color: whitesmoke;
     list-style-type: none;
     text-decoration: none;
+}
+.employeeInput{
+    color: black;
 }
 .logo a:hover,
 .main-nav a:hover {

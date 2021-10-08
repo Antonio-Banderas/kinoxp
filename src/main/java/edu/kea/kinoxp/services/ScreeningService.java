@@ -26,6 +26,9 @@ public class ScreeningService {
         return screeningRepo.fetchAllScreeningsByDate();
     }
 
+    public void addSeatsToSeatsReserved(int[] seatsArr, int reservationID, int screeningID){
+        screeningRepo.addSeatsToSeatsReserved(seatsArr,reservationID,screeningID);
+    }
 
     public List<Screening> getAllScreeningsByDateAndHall(int cinemas_idcinemahall) {
         return screeningRepo.fetchAllScreeningsByDateAndHall(cinemas_idcinemahall);
