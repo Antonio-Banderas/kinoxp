@@ -6,12 +6,11 @@ import edu.kea.kinoxp.services.ScreeningService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class ScreeningController {
@@ -49,7 +48,7 @@ public class ScreeningController {
         return "screening/cinema-seats";
     }
 
-    /*
+
     @PostMapping("/selectedSeats")
     public String selectedSeats(@RequestBody String allBody) {
         System.out.println(allBody);
@@ -60,5 +59,5 @@ public class ScreeningController {
 
         return "customer/create-customer";
     }
-    */
+
 }

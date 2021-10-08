@@ -36,6 +36,9 @@ public class CustomerController {
     return "redirect:/confirmation/"+ reservationID;
   }
 
+
+
+
   @GetMapping("/confirmation/{reservationid}")
   public String getConfirmation(Model model, @PathVariable("reservationid") int reservationID){
     Reservation reservation = reservationService.getReservationFromID(reservationID);
