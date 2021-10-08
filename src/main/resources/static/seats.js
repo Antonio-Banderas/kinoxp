@@ -16,7 +16,7 @@ container.addEventListener('click', e => {
         }
         else{
             //append child to selectedseats with seat id
-            let seatinput = document.createElement('p');
+            let seatinput = document.createElement('input');
             seatinput.setAttribute('name', 'seats');
             seatinput.setAttribute('id', 's' + e.target.id);
             seatinput.textContent = e.target.id;

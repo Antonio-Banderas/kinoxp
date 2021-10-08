@@ -26,16 +26,11 @@ public class CustomerController {
     return "customer/customers.html";
   }
 
-  @GetMapping("/customer")
-  public String newCustomer() {
-    return "customer/create-customer.html";
-  }
-
   @PostMapping("/customer")
   public String postScreeningAndSeats(Model model, @RequestParam(name="screening") Long screeningID, @RequestParam(name="seats") String[] seats){
     model.addAttribute("screening", screeningID);
     model.addAttribute("seats", seats);
-    return "redirect:/customer";
+    return "customer/create-customer.html";
   }
 
   @PostMapping("/create-customer/{screeningid}")
