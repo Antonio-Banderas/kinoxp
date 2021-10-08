@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head.html(currentPage='Edit Movie', customCSS='/products.css')"></head>
+<header th:replace="fragments/header.html"></header>
+<body>
+<br>
+<a class="btn" href="/customer">
+    <button> Opret Kunde </button>
+</a>
+<br>
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>Kunde ID</th>
+                <th>Fornavn</th>
+                <th>Efternavn</th>
+                <th>Telefon Nr.</th>
+                <th>Email</th>
+                <th>Andre Muligheder</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="customer: ${customers}">
+                <td th:text="${customer.idcustomer}"></td>
+                <td th:text="${customer.firstname}"></td>
+                <td th:text="${customer.lastname}"></td>
+                <td th:text="${customer.phonenumber}"></td>
+                <td th:text="${customer.email}"></td>
+                <td>
+                    <a th:href="@{'/customers/'+${customer.idcustomer}+'/delete'}">
+                        <button>Fjern</button>
+                    </a>
+                    <a th:href="@{'/customers/'+${customer.idcustomer}+'/edit'}">
+                        <button>Rediger</button>
+                    </a>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+<br>
+<br>
+
+</body>
+<footer th:replace="fragments/footer.html"></footer>
+</html>

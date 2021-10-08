@@ -7,10 +7,16 @@ import edu.kea.kinoxp.repositories.MovieRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class CustomerService {
     @Autowired
     CustomerRepo customerRepo;
+
+    public List<Customer> fetchAllCustomers() {
+        return customerRepo.fetchAllCustomers();
+    }
 
     public int createCustomer(Customer c){
         return customerRepo.createCustomer(c);

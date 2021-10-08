@@ -20,8 +20,14 @@ public class CustomerController {
   @Autowired
   ReservationService reservationService;
 
+  @GetMapping("/customers")
+  public String getCustomerPage(Model model){
+    model.addAttribute("customers", customerService.fetchAllCustomers());
+    return "customer/customers.html";
+  }
+
   @GetMapping("/customer")
-  public String getCustomerPage(){
+  public String newCustomer() {
     return "customer/create-customer.html";
   }
 
@@ -60,10 +66,10 @@ public class CustomerController {
     customerService.updateCustomer(c);
     return "redirect:/";
   }
-  @PostMapping("/deleteCustomer")
-  public String deleteCustomer(@RequestParam int idCustomer){
-    customerService.deleteCustomer(idCustomer);
-    return "redirect:/movies";
+  @GetMapping("/customers/{id}/delete")
+  public String deleteCustomer(@PathVariable int id){
+    customerService.deleteCustomer(id);
+    return "redirect:/customers";
   }
 
 

@@ -1,26 +1,23 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
-<head th:replace="fragments/head.html(currentPage='create-movie-fragment', customCSS='../create-customer.css')"></head>
+
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head.html(currentPage='Edit Customer', customCSS='/create-customer.css')"></head>
+<header th:replace="fragments/header.html"></header>
 <body>
-    <header th:replace="fragments/header.html"></header>
     <h2 id="customerTITEL">Kundens oplysninger</h2>
         <div id="customerFORM">
             <form th:action="@{/edit-customer}" method="POST">
-                <input type="hidden" name = "idCustomer" th:value="${customer.getIdCustomer}"/>
+                <input type="hidden" name = "idcustomer" th:value="${customer.idcustomer}"/>
                 <label>Fornavn</label>
-                <input type="text" name = "firstName" th:value="${customer.getFirstName}"/>
+                <input type="text" name = "firstname" th:value="${customer.firstname}"/>
                 <label>Efternavn</label>
-                <input type="text" name = "LastName" th:value="${customer.getLastName}"/>
+                <input type="text" name = "lastname" th:value="${customer.lastname}"/>
                 <label>Telefon nummer</label>
-                <input type="tel" id="phone" pattern="[0-9]{8}" name = "phoneNumber" th:value="${customer.getPhoneNumber}"/>
+                <input type="tel" id="phone" pattern="[0-9]{8}" name = "phonenumber" th:value="${customer.phonenumber}"/>
                 <label>Email</label>
-                <input type="email" name = "email" th:value="${customer.getEmail}"/>
+                <input type="email" name = "email" th:value="${customer.email}"/>
                 <button type = "submit" id="customerBTN">Gem</button>
             </form>
-    <form action="/deleteCustomer" method="post">
-        <input type="hidden" name="idCustomer" th:value="${customer.getIdCustomer}">
-        <button type="submit" id="deleteBTN">Slet Kunde</button>
-    </form>
         </div>
 </body>
     <footer th:replace="fragments/footer.html"></footer>

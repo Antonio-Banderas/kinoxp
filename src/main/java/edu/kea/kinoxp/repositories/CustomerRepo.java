@@ -2,6 +2,7 @@ package edu.kea.kinoxp.repositories;
 
 
 import edu.kea.kinoxp.models.Customer;
+import edu.kea.kinoxp.models.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -14,11 +15,18 @@ import org.springframework.jdbc.core.RowMapper;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 
 @Repository
 public class CustomerRepo {
     @Autowired
     JdbcTemplate template;
+
+    public List<Customer> fetchAllCustomers() {
+        String sql = "SELECT * FROM customers";
+        RowMapper<Customer> rowMapper = new BeanPropertyRowMapper<>(Customer.class);
+        return template.query(sql, rowMapper);
+    }
 
     public int createCustomer(Customer c) {
         String sql = "INSERT INTO customers(firstname,lastname,phonenumber, email) VALUES (?, ?, ?, ?)";
