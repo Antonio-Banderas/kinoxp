@@ -1,14 +1,37 @@
 const container = document.querySelector('.container');
 let rows = document.getElementsByClassName("row");
 let cinema = document.querySelector('.cinema').textContent;
+let selectedseats = document.getElementById('selected-seats');
+console.log(selectedseats.textContent);
 
 //Seat click event
 container.addEventListener('click', e => {
     if (e.target.classList.contains('seat') &&
         !e.target.classList.contains('occupied')) {
+
+        if (e.target.classList.contains('selected')){
+            //get child of selectedseats and remove it
+            let deleteme = document.getElementById('s' + e.target.id);
+            deleteme.remove();
+        }
+        else{
+            //append child to selectedseats with seat id
+            let seatinput = document.createElement('p');
+            seatinput.setAttribute('name', 'seats');
+            seatinput.setAttribute('id', 's' + e.target.id);
+            seatinput.textContent = e.target.id;
+            selectedseats.appendChild(seatinput);
+        }
         e.target.classList.toggle('selected');
+
+        console.log(e.target.id)
     }
 });
+
+function hasClass(element, className){
+    element.classList.contains(className);
+}
+
 let idseats = list.map(a => a.idseats);
 
 createGrid(cinema);

@@ -31,6 +31,13 @@ public class CustomerController {
     return "customer/create-customer.html";
   }
 
+  @PostMapping("/customer")
+  public String postScreeningAndSeats(Model model, @RequestParam(name="screening") Long screeningID, @RequestParam(name="seats") String[] seats){
+    model.addAttribute("screening", screeningID);
+    model.addAttribute("seats", seats);
+    return "redirect:/customer";
+  }
+
   @PostMapping("/create-customer/{screeningid}")
   public String createCustomer(@ModelAttribute Customer customer,@PathVariable("screeningid") int screeningid,@RequestParam("firstname") String firstName, @RequestParam("lastname") String lastName, @RequestParam("phonenumber") String phoneNumber, @RequestParam("email") String email){
     int customerID = customerService.createCustomer(customer);
