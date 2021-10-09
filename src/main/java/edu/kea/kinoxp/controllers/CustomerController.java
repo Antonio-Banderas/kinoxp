@@ -36,7 +36,6 @@ public class CustomerController {
   @PostMapping("/customer")
   public String postScreeningAndSeats(Model model, @RequestParam(name="screening") Long screeningID, @RequestParam(name="seats") String [] seats){
     String str = Arrays.toString(seats).replaceAll(" ","");
-    System.out.println(str);
 
     model.addAttribute("screening", screeningID);
     model.addAttribute("seats",str);
@@ -47,22 +46,32 @@ public class CustomerController {
   @PostMapping("/create-customer")
   public String createCustomer(@ModelAttribute Customer customer,  @RequestParam("screeningID") int screeningid, @RequestParam("seats") String seats, @RequestParam("firstname") String firstName, @RequestParam("lastname") String lastName, @RequestParam("phonenumber") String phoneNumber, @RequestParam("email") String email){
     int customerID = customerService.createCustomer(customer);
+
+    String str = seats;
+    str = str.replaceAll("\\[", "").replaceAll("\\]","");
+    int[] parsedSeatNumbers = Arrays.stream(str.split(",")).mapToInt(Integer::parseInt).toArray();
+
+/*
     String [] seatNumbers = seats.split(",");
     int [] parsedSeatNumbers = new int[seatNumbers.length];
+    System.out.println(seatNumbers);
 
     for(int i = 0; i< seatNumbers.length; i++){
       parsedSeatNumbers[i] = Integer.parseInt(seatNumbers[i]);
     }
+*/
+    screeningService.addSeatsToSeatsReserved(parsedSeatNumbers,screeningid);
+    List<seat_reserved> seatObjList = reservationService.getSeatReservedFromID(screeningid);
 
-    seat_reserved seatObj = reservationService.getSeatReservedFromID(screeningid);
-    Reservation reservation = new Reservation(seatObj.getId_seat_reserved(),seatObj.getId_screenings(),seatObj.getId_seats(),customerID);
 
-
-    int reservationID = reservationService.createReservation(reservation);
+    for(int i = 0; i < seatObjList.size(); i++){
+      Reservation reservation = new Reservation(seatObjList.get(i).getId_seat_reserved(), seatObjList.get(i).getId_screenings(),seatObjList.get(i).getId_seats(),customerID);
+      reservationService.createReservation(reservation);
+    }
 
     //screeningService.addSeatsToSeatsReserved(screeningid,reservationID,parsedSeatNumbers);
 
-    return "redirect:/";
+     return "redirect:/";
   }
 
 

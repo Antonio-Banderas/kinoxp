@@ -15,6 +15,7 @@ import org.springframework.stereotype.Repository;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.List;
 
 @Repository
 public class ReservationRepo {
@@ -49,10 +50,10 @@ public class ReservationRepo {
         return keyHolder.getKey().intValue();
     }
 
-    public seat_reserved getSeatReservedFromId(int id){
+    public List<seat_reserved> getSeatReservedFromId(int id){
         String sql ="SELECT * FROM seat_reserved WHERE id_screenings = ?";
         RowMapper<seat_reserved> rowMapper = new BeanPropertyRowMapper<>(seat_reserved.class);
-        return template.queryForObject(sql, rowMapper, id);
+        return template.query(sql, rowMapper, id);
     }
 
 }

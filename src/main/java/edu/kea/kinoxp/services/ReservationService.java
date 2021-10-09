@@ -7,6 +7,8 @@ import edu.kea.kinoxp.repositories.ScreeningRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ReservationService{
 
@@ -21,7 +23,7 @@ public class ReservationService{
         return reservationRepo.createReservation(r);
     }
 
-    public seat_reserved getSeatReservedFromID(int id){
+    public List<seat_reserved> getSeatReservedFromID(int id){
         return reservationRepo.getSeatReservedFromId(id);
     }
 

@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.SingleColumnRowMapper;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
+import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
@@ -43,15 +44,13 @@ public class ScreeningRepo {
         return  template.query(sql, rowMapper);
     }
 
-    public void addSeatsToSeatsReserved(int [] seatsArr, int reservationID, int screeningID) {
+    public void addSeatsToSeatsReserved(int [] seatsArr, int screeningID) {
         for(int i = 0; i <seatsArr.length; i++) {
-            String sql = "INSERT INTO seats_reserved(id_reservations,id_screenings,id_seats) VALUES(?,?,?)";
-            RowMapper<Screening> rowMapper = new BeanPropertyRowMapper<>(Screening.class);
-            template.query(sql, rowMapper, reservationID, screeningID);
+            String sql = "INSERT INTO seat_reserved(id_screenings,id_seats) VALUES(?,?)";
+            System.out.println(Arrays.toString(seatsArr) + " " +screeningID);
+            template.update(sql,screeningID,seatsArr[i]);
         }
     }
-
-
         public List<Screening> fetchAllScreeningsByDateAndHall(int cinemas_idcinemahall){
         String sql = "SELECT * FROM screenings WHERE date = CURRENT_DATE && cinemas_idcinemahall = ?";
         RowMapper<Screening> rowMapper = new BeanPropertyRowMapper<>(Screening.class);
